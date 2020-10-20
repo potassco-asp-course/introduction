@@ -1,0 +1,40 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Normal logic programs}
+  \label{eqn:rule}
+  \begin{itemize}
+  \item <1->
+    A \alert{logic program}, $P$, over a set $\mathcal{A}$ of atoms is a finite \alert{set} of rules
+    \begin{itemize}\normalsize
+    \item<only@2-3> $\mathcal{A}$ is also called the \alert{alphabet} (or signature) of $P$
+      \smallskip
+    \end{itemize}
+  \item <3->
+    A (normal) \alert{rule}, $r$, is of the form
+    \[
+      \alt<7>{\tt         a_0                                                          \texttt{ :- }           a_1,\dots,a_m,\texttt{ not }{a_{m+1}},\dots,\texttt{ not }{a_n}.}%
+     {\alt<3,10>{\underbrace{a_0}_{\alt<10>{\head{r}}{\alert{\text{\normalsize head}}}} \leftarrow \underbrace{a_1,\dots,a_m,        \neg   a_{m+1} ,\dots,        \neg   a_n}_{\alt<10>{\body{r}}{\alert{\text{\normalsize body}}}}}
+             {            a_0                                                           \leftarrow             a_1,\dots,a_m,        \neg   a_{m+1}, \dots,        \neg   a_n}}
+    \]
+    where $0\leq m\leq n$ and each $a_i\in{\mathcal{A}}$ is an \alert{atom} for $0\leq i\leq n$
+  \item <only@5-7> A \alert{literal} is an atom or a negated atom
+  \item <only@6-7> \structure{Note} \ A body is a (finite) \alert{set} of literals
+  \item <only@9-16>\structure{Notation}\normalsize
+    \begin{align*}
+      \only<9-15 >{  \head{r}\phantom{^+} &=\, a_0}
+      \only<9-13 >{\\\body{r}\phantom{^+} &=\, \{a_1,\dots,a_m,\neg a_{m+1},\dots,\neg a_n\}}
+      \only<12   >{\\\Head{P}\phantom{^+} &=\, \{\head{r}\mid r\in P\}
+                   \\\body{P}\phantom{^+} &=\, \{\body{r}\mid r\in P\}}
+      \only<13-15>{\\\pbody{r}            &=\, \{a_1,\dots,a_m\}\\}
+      \only<13-16>{  \nbody{r}            &=\, \{a_{m+1},\dots,a_n\}}
+      \only<14-15>{\\\atom{P}\phantom{^+} &=\, \textstyle\bigcup_{r\in P}\left(\{\head{r}\}\cup\pbody{r}\cup\nbody{r}\right)}
+    \end{align*}%
+  \item <only@15> \structure{Note} \ We often assume that $\mathcal{A}=\atom{P}$
+  \item <only@16> A program $P$ is \alert{positive} if $\nbody{r}=\emptyset$ for all $r\in P$
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
