@@ -1,0 +1,81 @@
+% ----------------------------------------------------------------------
+\begin{frame}{A model \dots?}
+  \bigskip
+  \begin{itemize}
+  \item<1-> \structure{Assignment} \
+    A function mapping variables to values
+    \begin{itemize}
+    \item<only@3-4> \structure{Example} \
+      \(
+      \ass: \{x,y,z\}\rightarrow\mathbb{N}
+      \)
+      such that
+      \(
+      \ass=\{x\mapsto 3,y\mapsto 1,z\mapsto 7\}
+      \)
+    \end{itemize}
+    \smallskip
+  \item<2-> \structure{Solution} \
+    An assignment satisfying a set of constraints
+    \begin{itemize}
+    \item <only@4> \structure{Example} \
+      \ass\ is a solution of
+      \(
+      \{2x<z, x+y<2z\}
+      \)
+    \end{itemize}
+  \item[] \smallskip
+  \item<only@6-> \structure{Interpretation} \
+    An assignment mapping variables to truth values
+    \begin{itemize}
+    \item<only@7-11>
+      Truth values \true\ and \false\ stand for true and false
+      \only<7-11>{\par  (but there may be others)}
+      \smallskip
+    \item<only@8-11> \structure{Example} \
+      \(
+      B: \{a,b,c\}\rightarrow\{\true,\false\}
+      \)
+      such that
+      \(
+      B=\{a\mapsto\true, b\mapsto\true,c\mapsto\false\}
+      \)
+      \smallskip
+    \item<only@9-11> An interpretation satisfies a formula if it evaluates the formula to \true
+    \end{itemize}
+    \smallskip
+  \item<only@10-> \structure{Model}\
+    An interpretation satisfying a set of formulas (or rules)
+    \begin{itemize}
+    \item <only@11-11> \structure{Example} \
+      $B$ is a model of
+      \(
+      \{a\wedge b, a\vee c\}
+      \)
+    \end{itemize}
+  \item[] \smallskip
+  \item<only@13-> \structure{Representation}
+    \par
+    \smallskip
+    We often denote interpretations by the set of their true atoms
+    \begin{itemize}
+    \item<only@14> \structure{Example} \
+      We use
+      \(
+      \{a,b\}
+      \)
+      to represent
+      \(
+      \{a\mapsto\true, b\mapsto\true,c\mapsto\false\}
+      \)
+    \end{itemize}
+  \item <only@15>[]
+    and (alternatively) use sets as the semantic cornerstones \par (rather than assignments or interpretations)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
