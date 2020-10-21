@@ -28,11 +28,12 @@
       \only<14-17,23-26>{$\T{P}{X_1}=\{a,b\}$}&
       \only<16-17,25-26>{$\T{P}{X_2}=\{a,b\}$}&
       \end{tabular}
-    \item<only@27> \structure{Procedural answer} \ The ``meaning of $P$'' is given by\par the value $X$ returned by the procedure
+    \item<only@27> \structure{Procedural answer} \ The ``meaning of $P$'' is given by
+      \par the value $X$ returned by the procedure applied to $P$
 
-  \item<only@28-57> \structure{Mathematical characterization}
+  \item<only@28-58> \structure{Mathematical characterization}
     \begin{itemize}\normalsize
-    \item<only@29-57> A set $X$ of atoms is \alert{closed} under a positive program $P$ if
+    \item<only@29-58> A set $X$ of atoms is \alert{closed} under a positive program $P$ if
       \par\smallskip
       $\head{r}\in X$ whenever $\pbody{r}\subseteq X$ for all $r\in P$
       \smallskip
@@ -52,13 +53,15 @@
       \only<32,41,34,43,36,45,49>{\KO}%
       \only<38,47,51,53,55>{\OK}
 
-    \item<only@56-57> \structure{Mathematical answer} \ The ``meaning of $P$'' is given by
+    \item<only@56-58> \structure{Mathematical answer} \ The ``meaning of $P$'' is given by
       \par the \alert{smallest} set of atoms closed under $P$
       \smallskip
-    \item<only@57> and denoted by \Cn{P}\pause[58], and called the \alert{consequences} of $P$
+    \item<only@57-58> and denoted by \Cn{P}\pause[58] and called the \alert{consequences} of $P$
     \end{itemize}
-  \item<only@59> \structure{Procedural answer} \ value $X$ returned by the procedure % (applied to $P$)
-  \item<only@59> \structure{Mathematical answer} \ consequences $\Cn{P}$ of $P$
+  \item<only@59-> \structure{Procedural answer} \ Value $X$ returned by the procedure applied to $P$
+  \item<only@59-> \structure{Mathematical answer} \ Consequences $\Cn{P}$ of $P$
+    \medskip
+  \item<only@60> \structure{Common answer} \ $X=\Cn{P}$
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
