@@ -1,0 +1,52 @@
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Formal Definition}{Stable models of positive programs}
+  \begin{itemize}
+  \item<2-> A set of atoms $X$ is \alert{closed under} a positive program $P$ iff
+    \\for any $r\in P$, $\head{r}\in X$ whenever $\pbody{r}\subseteq X$
+    \begin{itemize}
+    \item $X$ corresponds to a model of $P$ (seen as a formula)
+    \end{itemize}
+    \medskip
+  \item<3-> The \alert{smallest} set of atoms which is closed under a positive
+    program $P$ is denoted by $\Cn{P}$
+    \begin{itemize}
+    \item $\Cn{P}$ corresponds to the $\subseteq$-smallest model of $P$ (ditto)
+    \end{itemize}
+    \medskip
+  \item<4-> The set $\Cn{P}$ of atoms is the \alert{stable model} of a \emph{positive} program $P$
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Some ``logical'' remarks}
+  \begin{itemize}
+  \item <1-> Positive rules are also referred to as \alert<1-2>{definite clauses}
+    \begin{itemize}
+    \item Definite clauses are disjunctions with \alert<1>{exactly one} positive atom:
+      \[
+      a_0\vee\neg a_1\vee\dots\vee\neg a_m
+      \]
+    \item A set of definite clauses has a (unique) \alert<3>{smallest model}
+    \end{itemize}
+    \medskip
+  \item<2-> \alert<2>{Horn clauses} are clauses with \alert<2>{at most} one positive atom
+    \begin{itemize}
+    \item Every definite clause is a Horn clause but not vice versa
+    \item Non-definite Horn clauses can be regarded as integrity constraints
+      \smallskip
+    \item A set of Horn clauses has a \alert<3>{smallest model} or none
+    \end{itemize}
+    \medskip
+  \item<3-> This \alert<3>{smallest model} is the intended semantics of such sets of clauses
+    \begin{itemize}
+    \item Given a positive program $P$,
+    $\Cn{P}$ corresponds to the smallest model of the set of
+    definite clauses corresponding to $P$
+  \end{itemize}
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

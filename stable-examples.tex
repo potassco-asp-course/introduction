@@ -1,0 +1,122 @@
+% \section{Examples}
+% ----------------------------------------------------------------------
+\begin{frame}{Example one}
+\[
+P
+=
+\left\{
+    p \leftarrow p, \
+    q \leftarrow \only<-8>{\neg p}\only<9>{\alert{\neg p}}
+\right\}
+\]
+\pause
+\newcommand{\PIip}{%
+    \begin{array}[t]{lll}
+      p &\leftarrow&p
+      \\
+       &&
+    \end{array}}
+\newcommand{\PIop}{%
+    \begin{array}[t]{lll}
+      p &\leftarrow&p
+      \\
+      q &\leftarrow&
+    \end{array}}
+\[
+\begin{array}{c|cl|ccr}
+       X                   &\ &\uncover<3-7>{P^X}&\ &\uncover<3-7>{\Cn{P^X}}&                              \\\hline
+\{\phantom{p         ,q}\} &  &\uncover<3-7>{\PIop}&  &\uncover<3-7>{\{q\}}     &\uncover<4->{\KO}             \\\hline
+\{         p\phantom{,q}\} &  &\uncover<3-7>{\PIip}&  &\uncover<3-7>{\emptyset} &  \only<5-8>{\KO}\only<9>{\OK}\\\hline
+\{\phantom{p,}        q \} &  &\uncover<3-7>{\PIop}&  &\uncover<3-7>{\{q\}}     &\uncover<6->{\OK}             \\\hline
+\{         p         ,q \} &  &\uncover<3-7>{\PIip}&  &\uncover<3-7>{\emptyset} &  \only<7-8>{\KO}\only<9>{\OK}
+\end{array}
+\]
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example two}
+\[
+P
+=
+\left\{
+    p \leftarrow \only<-8>{\neg q}\only<9>{\alert{\neg q}}, \
+    q \leftarrow \only<-8>{\neg p}\only<9>{\alert{\neg p}}
+\right\}
+\]
+\pause
+% \newcommand{\PI}{%
+%     \begin{array}[t]{lll}
+%       p &\leftarrow& \neg q
+%       \\
+%       q &\leftarrow& \neg p
+%     \end{array}}
+\newcommand{\PIipiq}{%
+    \begin{array}[t]{lll}
+      &&
+      \\
+      &&
+    \end{array}}
+\newcommand{\PIipoq}{%
+    \begin{array}[t]{lll}
+      p &\leftarrow&
+      \\
+      &&
+    \end{array}}
+\newcommand{\PIopiq}{%
+    \begin{array}[t]{lll}
+      &&
+      \\
+      q &\leftarrow&
+    \end{array}}
+\newcommand{\PIopoq}{%
+    \begin{array}[t]{lll}
+      p &\leftarrow&
+      \\
+      q &\leftarrow&
+    \end{array}}
+\[
+\begin{array}{c|cl|ccr}
+       X                   &\ &\uncover<3-7>{P^X}  &\ &\uncover<3-7>{\Cn{P^X}}&              \\\hline
+\{\phantom{p         ,q}\} &  &\uncover<3-7>{\PIopoq}&  &\uncover<3-7>{\{p,q\}}   &\uncover<4->{\KO}\\\hline
+\{         p\phantom{,q}\} &  &\uncover<3-7>{\PIipoq}&  &\uncover<3-7>{\{p\}}     &\uncover<5->{\OK}\\\hline
+\{\phantom{p,}        q \} &  &\uncover<3-7>{\PIopiq}&  &\uncover<3-7>{\{q\}}     &\uncover<6->{\OK}\\\hline
+\{         p         ,q \} &  &\uncover<3-7>{\PIipiq}&  &\uncover<3-7>{\emptyset} &  \only<7-8>{\KO}\only<9>{\OK}
+\end{array}
+\]
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example three}
+\[
+P
+=
+\left\{
+    p \leftarrow \only<-6>{\neg p}\only<7>{\alert{\neg p}}
+\right\}
+\]
+\pause\bigskip
+% \newcommand{\PI}{%
+%     \begin{array}[t]{lll}
+%       p &\leftarrow& \neg p
+%     \end{array}}
+\newcommand{\PIip}{%
+    \begin{array}[t]{l}
+    \end{array}}
+\newcommand{\PIop}{%
+    \begin{array}[t]{l}
+      p \leftarrow \
+    \end{array}}
+\[
+\begin{array}{l|cl|ccr}
+             X  &\ &\uncover<3-5>{P^X}&\ &\uncover<3-5>{\Cn{P^X}} &                  \\\hline
+\{\phantom{p}\} &  &\uncover<3-5>{\PIop}&  &\uncover<3-5>{\{p\}}      &\uncover<4->{\KO} \\\hline
+\{         p \} &  &\uncover<3-5>{\PIip}&  &\uncover<3-5>{\emptyset}  &  \only<5-6>{\KO}\only<7>{\OK}
+\end{array}
+\]
+\bigskip
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
