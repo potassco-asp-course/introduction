@@ -1,7 +1,60 @@
 % ----------------------------------------------------------------------
 \begin{frame}{What is the meaning of a \alt<1>{logic program}{set~of\only<3->{~positive}~rules}?}
   \begin{itemize}
-  \item<4-> \structure{Idea} The set of atoms derivable from the rules
+  \item<4-> \structure{Idea} \ The set\only<5->{ $X$} of atoms derivable from the rules in program\only<5->{ $P$}
+  \item<6-> \structure{Question} \ How to characterize $X$ given $P$?
+    \bigskip
+  \item<only@7-27> \structure{Procedural characterization}
+    \smallskip
+  \item<only@8-27> [] \only<9->{\textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\}$ \textbf{in}} \
+    \begin{itemize}\normalsize
+    \item []$X := \emptyset$
+      \smallskip
+    \item []\textbf{while} \alt<9->{$\T{P}{X}\neq X$}{$\{\head{r}\mid r\in P, \pbody{r}\subseteq X\}\neq X$}
+      \begin{itemize}\normalsize
+      \item[] $X := \alt<9->{\,\T{P}{X}}{\{\head{r}\mid r\in P, \pbody{r}\subseteq X\,\}}$
+      \end{itemize}
+    \item[] \textbf{return} $X$
+    \end{itemize}
+    \item<only@10-26> \structure{Example} \
+      $P=\{a\leftarrow{},b\leftarrow a\only<19->{,d\leftarrow c}\}$
+
+      \begin{tabular}{cccc}
+      \only<11-17,20-26>{\ $X_0=\emptyset$}&
+      \only<13-17,22-26>{\ $X_1=\{a\}$}&
+      \only<15-17,24-26>{\quad $X_2=\{a,b\}$}&
+      \only<17,26>{\quad $X=\{a,b\}$}\\
+      \only<12-17,21-26>{$\T{P}{X_0}=\{a\}$}&
+      \only<14-17,23-26>{$\T{P}{X_1}=\{a,b\}$}&
+      \only<16-17,25-26>{$\T{P}{X_2}=\{a,b\}$}&
+      \end{tabular}
+    \item<only@27> \structure{Procedural answer} \ The ``meaning of $P$'' is given by\par the value $X$ returned by the procedure
+
+  \item<only@28-> \structure{Mathematical characterization}
+    \begin{itemize}\normalsize
+    \item<only@29-> A set $X$ of atoms is \alert{closed} under a positive program $P$ if
+      \par\smallskip
+      $\head{r}\in X$ whenever $\pbody{r}\subseteq X$ for all $r\in P$
+      \smallskip
+    \item<only@30-55> \structure{Example} \
+      $P=\{a\leftarrow{},b\leftarrow a\only<39->{,d\leftarrow c}\}$
+      \par\smallskip
+      \only<31-38,40-55>{Is}
+      \only<31-32,40-41>{$\emptyset$}%
+      \only<33-34,42-43>{$\{a\}$}%
+      \only<35-36,44-45>{$\{b\}$}%
+      \only<37-38,46-47>{$\{a,b\}$}%
+      \only<      48-49>{$\{a,b,c\}$}%
+      \only<      50-51>{$\{a,b,d\}$}%
+      \only<      52-53>{$\{a,b,c,d\}$}%
+      \only<      54-55>{$\{a,b,c,d,e\}$}
+      \only<31-38,40-55>{closed under $P$\,?}
+      \only<32,41,34,43,36,45,49>{\KO}%
+      \only<38,47,51,53,55>{\OK}
+
+    \item<only@56-> \structure{Mathematical answer} \ The ``meaning of $P$'' is given by\par the \alert{smallest} set of atoms closed under $P$
+
+    \end{itemize}
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
