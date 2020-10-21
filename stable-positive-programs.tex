@@ -1,22 +1,4 @@
 % ----------------------------------------------------------------------
-\begin{frame}[c]{Formal Definition}{Stable models of positive programs}
-  \begin{itemize}
-  \item<2-> A set of atoms $X$ is \alert{closed under} a positive program $P$ iff
-    \\for any $r\in P$, $\head{r}\in X$ whenever $\pbody{r}\subseteq X$
-    \begin{itemize}
-    \item $X$ corresponds to a model of $P$ (seen as a formula)
-    \end{itemize}
-    \medskip
-  \item<3-> The \alert{smallest} set of atoms which is closed under a positive
-    program $P$ is denoted by $\Cn{P}$
-    \begin{itemize}
-    \item $\Cn{P}$ corresponds to the $\subseteq$-smallest model of $P$ (ditto)
-    \end{itemize}
-    \medskip
-  \item<4-> The set $\Cn{P}$ of atoms is the \alert{stable model} of a \emph{positive} program $P$
-  \end{itemize}
-\end{frame}
-% ----------------------------------------------------------------------
 \begin{frame}{Some ``logical'' remarks}
   \begin{itemize}
   \item <1-> Positive rules are also referred to as \alert<1-2>{definite clauses}
