@@ -1,4 +1,27 @@
 % ----------------------------------------------------------------------
+\begin{frame}{What is a stable model?}
+  \begin{itemize}
+  \item \structure{Procederal attempt}
+      \item [] \textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\}$ \textbf{in}
+    \begin{itemize}\normalsize
+    \item []$X := \emptyset$
+      \smallskip
+    \item []\textbf{while} {$\T{P}{X}\neq X$}
+      \begin{itemize}\normalsize
+      \item[] $X := {\,\T{P}{X}}$
+      \end{itemize}
+    \item[] \textbf{return} $X$
+    \end{itemize}
+    \item \structure{Example} \
+      $P=\{a\leftarrow{},b\leftarrow \neg c,c\leftarrow b}\}$
+
+  \item \structure{Logical attempt}
+  \item \structure{Example} \
+          $P=\{a\leftarrow\neg b\}$
+
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
 \begin{frame}{Basic idea}
 \pause
 \begin{columns}
