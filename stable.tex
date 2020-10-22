@@ -1,8 +1,8 @@
 % ----------------------------------------------------------------------
-\begin{frame}{Formal definition}{Stable models of normal programs}
+\begin{frame}{This is a stable model!}{Stable models of normal programs}
 
   \begin{itemize}
-  \item <1-> The \alert{reduct}, $\reduct{P}{X}$, of a program $P$ relative to
+  \item <2-> The \alert{reduct}, $\reduct{P}{X}$, of a program $P$ relative to
     a set $X$ of atoms is defined by
     \[
     \reduct{P}{X}
@@ -10,16 +10,16 @@
     \{\head{r}\leftarrow\pbody{r} \mid r\in P \text{ and } \nbody{r}\cap X=\emptyset\}
     \]
 
-  \item <2-> A set $X$ of atoms is a \alert{stable model} of a program $P$,
+  \item <3-> A set $X$ of atoms is a \alert{stable model} of a program $P$,
     if $\Cn{\reduct{P}{X}}=X$
     \bigskip
     \bigskip
-  \item<3-> \structure{Remarks}
-    \begin{itemize}
-    \item<3-> $\Cn{\reduct{P}{X}}$ is the $\subseteq$--smallest (classical) model of \reduct{P}{X}
+  \item<4-> \structure{Remarks}
+    \begin{itemize}\normalsize
+    \item<4-> $\Cn{\reduct{P}{X}}$ is the $\subseteq$--smallest (classical) model of \reduct{P}{X}
       \medskip
-    \item<4-> Each atom in $X$ is justified by an \emph{``applying rule from $P$''}
-    \item<4-> Set $X$ is \alert{stable} under \emph{``applying rules from $P$''}
+    \item<5-> Each atom in $X$ is justified by an \emph{``applying rule from $P$''}
+      % \item<5-> Set $X$ is \alert{stable} under \emph{``applying rules from $P$''}
     \end{itemize}
   \end{itemize}
 \end{frame}
