@@ -1,13 +1,34 @@
 % ----------------------------------------------------------------------
 \begin{frame}{What is a stable model?}
   \begin{itemize}
-  \item \structure{Lessons learned} from positive programs
-    \begin{itemize}
-    \item Every atom true in \Cn{P} is justified by a proof
-    \item This yields the smallest model of $P$, eliminating all non-minimal ones
+  \item<only@2-> \structure{Lessons learned} from positive programs
+    \begin{itemize}\normalsize
+    \item \Cn{P} is the smallest model of $P$, eliminating all other ones
+    \item Every atom in \Cn{P} is justified by a proof
+      \medskip
+    \item<only@3-4> \structure{Example} \
+      $P=\{a\leftarrow{},b\leftarrow a, d\leftarrow c\}$
+      \ yields \
+      $\{a,b\}$
+      \ only
+      \begin{itemize}\normalsize
+      \item<4> $a$ \ is justified by \ $a\leftarrow$
+      \item<4> $b$ \ is justified by \ $b\leftarrow a$ and $a\leftarrow{}$
+      \end{itemize}
     \end{itemize}
-  \item \structure{Procederal attempt}
-      \item [] \textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\}$ \textbf{in}
+
+  \item<only@6-11> \structure{Logical attempt}\only<11>{ \ \textcolor{red}{failed}}
+    \begin{itemize}\normalsize
+    \item<7-> \structure{Hypothesis} \ The smallest model of $P$\,?
+    \item<only@8-> \structure{Example} \ $P=\{a\leftarrow\neg b\}$ \ yields \ $\{a\}$
+    \item<only@9->[] but $P$ has \alt<10->{two minimal}{three} models, $\{a\}$\alt<10->{ and}{,} $\{b\}$
+      \only<9>{, and $\{a,b\}$}
+    \end{itemize}
+
+  \item<only@12-> \structure{Procederal attempt\only<34>{ patched}} \only<33>{ \ \textcolor{red}{failed}}
+
+  \item<only@34-> [] \textbf{guess} $X'$
+  \item<only@13-> [] \textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\only<14->{,\nbody{r}\cap X\only<34->{'}=\emptyset}\}$ \textbf{in}
     \begin{itemize}\normalsize
     \item []$X := \emptyset$
       \smallskip
@@ -15,14 +36,22 @@
       \begin{itemize}\normalsize
       \item[] $X := {\,\T{P}{X}}$
       \end{itemize}
-    \item[] \textbf{return} $X$
+    \item[] \only<34->{\textbf{if} $X=X'$ \textbf{then} }\textbf{return} $X$\only<34->{ \textbf{else} \textbf{fail}}
     \end{itemize}
-    \item \structure{Example} \
-      $P=\{a\leftarrow{},b\leftarrow \neg c,c\leftarrow b\}$
+  \item<only@15-32> \structure{Example} \
+    $P=\{a\leftarrow{},b\leftarrow a,\neg c\only<24->{,c\leftarrow b}\}$
 
-  \item \structure{Logical attempt}
-  \item \structure{Example} \
-          $P=\{a\leftarrow\neg b\}$
+    \begin{tabular}{ccccc}
+      \only<16-22,25-32>{\ $X_0=\emptyset$}&
+      \only<18-22,27-32>{\ $X_1=\{a\}$}&
+      \only<20-22,29-32>{\quad $X_2=\{a,b\}$}&
+      \only<      31-32>{\quad $X_2=\{a,b,c\}$}&
+      \only<22         >{\quad $X=\{a,b\}$}\\
+      \only<17-22,26-32>{$\T{P}{X_0}=\{a\}$}&
+      \only<19-22,28-32>{$\T{P}{X_1}=\{a,b\}$}&
+      \only<21-22,30-32>{$\T{P}{X_2}=\{a,b\only<30-32>{,c}\}$}&
+      \only<      32-32>{$\T{P}{X_1}=\{a,b\}$}&
+      \end{tabular}
 
   \end{itemize}
 \end{frame}
