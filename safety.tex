@@ -17,6 +17,41 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{Grounding safe programs}
+  \begin{itemize}
+  \item<1-> \(
+    P = \{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{}, \ t(X,Y) \leftarrow r(X,Y) \}
+    \)
+    \medskip
+  \item <2-> \structure{Grounding intuitively}
+    \smallskip
+    \begin{enumerate}\setcounter{enumi}{-1}
+    \item <3-> Partition program along predicate dependencies
+      \begin{itemize}\small
+      \item \( P_1 = \{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \} \)
+      \item \( P_2 = \{ t(X,Y) \leftarrow r(X,Y) \} \)
+      \end{itemize}
+      \smallskip
+    \item <4-> Ground $P_1$
+      \begin{itemize}\small
+      \item Rules: \ $\{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \}$
+      \item Atoms:   $\{ r(a,b), r(b,c) \}$
+      \end{itemize}
+      \smallskip
+    \item<5-> Ground $P_2$ relative to $\{ r(a,b), r(b,c) \}$
+      \begin{itemize}\small
+      \item Rules: \ $\{ t(a,b) \leftarrow r(a,b),\ t(b,c) \leftarrow r(b,c) \}$
+      \item Atoms:   $\{ r(a,b), r(b,c), t(a,b), t(b,c) \}$
+      \end{itemize}
+      \smallskip
+    \item<6-> Resulting ground rules
+      \begin{itemize}\small
+      \item  $\{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \}\cup \{ t(a,b) \leftarrow r(a,b),\ t(b,c) \leftarrow r(b,c) \}$
+      \end{itemize}
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
 %
 %%% Local Variables:
 %%% mode: latex
