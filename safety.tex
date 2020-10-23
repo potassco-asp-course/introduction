@@ -2,16 +2,23 @@
 \begin{frame}{Safety}
   \bigskip
   \begin{itemize}
-  \item ASP systems require that all rules in a program are safe
-    \bigskip
-  \item A normal rule is \alert{safe}, if each of its variables also occurs in some positive body literal
+  % \item ASP systems require that all rules in a program are safe
+  \item A normal rule is \alert{safe}, if all its variables occur in its positive body
+  \item<2-> \structure{Examples}
+    \begin{itemize}
+    \item<3-> $p(a)\leftarrow{}$               \only<4->{\OK}
+    \item<3-> $p(X)\leftarrow{}$               \only<5->{\KO}
+    \item<3-> $p(X)\leftarrow q(X)$            \only<6->{\OK}
+    \item<3-> $p(X)\leftarrow \neg q(X)$       \only<7->{\KO}
+    \item<3-> $p(X)\leftarrow \neg q(X), r(X)$ \only<8->{\OK}
+    \end{itemize}
     \medskip
-  \item A normal program is safe, if all of its rules are safe
+  \item<9-> A normal program is safe, if all of its rules are safe
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 %
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../asp"
+%%% TeX-master: "../../main"
 %%% End:
