@@ -1,8 +1,9 @@
 % ----------------------------------------------------------------------
-\begin{frame}{This is a stable model!}{Stable models of normal programs}
+\begin{frame}{\alt<7->{Stable models}{What is the meaning of a logic program?\only<6>{\\
+        Stable models!}}}
 
   \begin{itemize}
-  \item <2-10> The \alert{reduct}, \reduct{P}{X}, of a program $P$ relative to
+  \item <2-11> The \alert{reduct}, \reduct{P}{X}, of a program $P$ relative to
     a set $X$ of atoms is
     \begin{align*}
       \reduct{P}{X} &= \{\head{r}\leftarrow\pbody{r} \mid r\in P,\ \nbody{r}\cap X=\emptyset\}
@@ -18,23 +19,23 @@
     \end{enumerate}
   \item<only@4>[] Only negative body literals are evaluated!
 
-  \item <only@6-> A set $X$ of atoms is a \alert{stable model} of a program $P$
+  \item <only@7-11> A set $X$ of atoms is a \alert{stable model} of a program $P$
 
     if $\Cn{\reduct{P}{X}}=X$
 
     \smallskip
 
-  \item<only@7> \structure{Note}
+  \item<only@8> \structure{Note}
     \begin{itemize}\normalsize
     \item $\Cn{\reduct{P}{X}}$ is the $\subseteq$-smallest model of \reduct{P}{X}
       \smallskip
     \item Each atom in $X$ is justified by a proof from \reduct{P}{X}
     \end{itemize}
 
-  \item<only@8-9> \structure{Procedural counterpart}
+  \item<only@9-10> \structure{Procedural counterpart}
 
-  \item<only@9> []\small \textbf{guess} $Y$
-  \item<only@9> []\small \textbf{let} $\T{\reduct{P}{Y}}{X}=\{\head{r}\mid r\in \reduct{P}{Y}, \pbody{r}\subseteq X\}$ \textbf{in}
+  \item<only@10> []\small \textbf{guess} $Y$
+  \item<only@10> []\small \textbf{let} $\T{\reduct{P}{Y}}{X}=\{\head{r}\mid r\in \reduct{P}{Y}, \pbody{r}\subseteq X\}$ \textbf{in}
     \begin{itemize}
     \item []$X := \emptyset$
       \smallskip
