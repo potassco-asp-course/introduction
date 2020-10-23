@@ -1,6 +1,6 @@
 % ----------------------------------------------------------------------
 \begin{frame}{What is a stable model?}
-  \medskip
+
   \begin{itemize}
   \item<only@2-12> \structure{Lessons learned} from positive programs
     \begin{itemize}\normalsize
@@ -61,7 +61,19 @@
       \only<      32-32,                        52-53,55-56    >{$\T{P}{X_3}=\{a,b\only<      52-53,55-56>{,c}\}$}&
       \end{tabular}
 
-    \item<only@64> \structure{Question} \ Can this idea be used for a logical characterisation\,?
+    \item<only@64-> \structure{Question} \ Can this idea be used for a logical characterisation\,?
+
+      \only<65->{%
+      \begin{enumerate}
+      \item<65-> guess $Y$
+      \item<66-> evaluate \nbody{r} of each rule $r\in P$ wrt to $Y$
+        \begin{enumerate}
+        \item<67-> if $\nbody{r}\cap Y\neq\emptyset$ drop $r$
+        \item<67-> if $\nbody{r}\cap Y  = \emptyset$ drop $\nbody{r}$ from $r$
+        \end{enumerate}
+      \item<68-> if $Y=\Cn{P'}$ for the resulting (positive) program $P'$ then \OK\ else \KO\
+      \end{enumerate}}
+
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
