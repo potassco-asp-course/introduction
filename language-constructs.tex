@@ -1,9 +1,9 @@
+% ----------------------------------------------------------------------
 \begin{frame}[fragile]{Language constructs}
   \bigskip
   \begin{itemize}\itemsep 5pt
   \item<2-> \structure{Facts}                 \hfill\alert<1>{\texttt{q(42)}.}
   \item<2-> \structure{Rules}                 \hfill\alert<1>{\texttt{p(\alt<3>{42}{X}) :- q(\alt<3>{42}{X}), not r(\alt<3>{42}{X})}.}
-%  \item<2-> \structure{Variables}             \hfill\alert<2>{\texttt{p(X) :- q(X)}.}
   \item<4-> \structure{Conditional literals}  \hfill\texttt{p :- \alert<4>{q(X) : r(X)}.}
   \item<5-> \structure{Disjunction}           \hfill\texttt{\alert<5>{p(X) ; q(X)} :- r(X).}
   \item<6-> \structure{Integrity constraints} \hfill\texttt{\alert<6>{:- q(X), p(X)}.}
@@ -14,8 +14,9 @@
   \item<10->[]\ \hfill\alert<10>{\texttt{\#minimize \{ C@42 : q(X), p(X,C) \}}}
 \end{itemize}
 \end{frame}
+% ----------------------------------------------------------------------
 %
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../asp"
+%%% TeX-master: "../../main"
 %%% End:
