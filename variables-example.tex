@@ -11,9 +11,9 @@
       p(\alert<2>{X},\alert<2>{Z}) \leftarrow p(\alert<2>{X},\alert<2>{Y}), p(\alert<2>{Y},\alert<2>{Z}) \\[3pt]
       q(a) \\
       q(b) \\
-      q(\alert<2>{X}) \leftarrow \naf r(\alert<2>{X}), d(\alert<2>{X}) \\[3pt]
-      r(\alert<2>{X}) \leftarrow \naf q(\alert<2>{X}), d(\alert<2>{X}) \\[3pt]
-      s(\alert<2>{X}) \leftarrow \naf r(\alert<2>{X}), p(\alert<2>{X},\alert<2>{Y}), q(\alert<2>{Y})
+      q(\alert<2>{X}) \leftarrow \neg r(\alert<2>{X}), d(\alert<2>{X}) \\[3pt]
+      r(\alert<2>{X}) \leftarrow \neg q(\alert<2>{X}), d(\alert<2>{X}) \\[3pt]
+      s(\alert<2>{X}) \leftarrow \neg r(\alert<2>{X}), p(\alert<2>{X},\alert<2>{Y}), q(\alert<2>{Y})
     \end{array}
   \]
   \bigskip

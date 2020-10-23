@@ -12,9 +12,9 @@
     p(X,Z) \leftarrow \alert<4>{p(X,Y)}, \alert<4>{p(Y,Z)} & & \only<5->{\OK}\\[3pt]
     q(a) & & \only<3->{\OK}\\
     q(b) & & \only<3->{\OK}\\
-    q(X) \leftarrow \naf r(X)\only<7->{, d(X)} & & \only<6>{\KO}\only<7->{\OK}\\[3pt]
-    r(X) \leftarrow \naf q(X), \alert<8>{d(X)} & & \only<9->{\OK}\\
-    s(X) \leftarrow \naf r(X), \alert<10>{p(X,Y)}, \alert<10>{q(Y)} & & \only<11->{\OK}\\
+    q(X) \leftarrow \neg r(X)\only<7->{, d(X)} & & \only<6>{\KO}\only<7->{\OK}\\[3pt]
+    r(X) \leftarrow \neg q(X), \alert<8>{d(X)} & & \only<9->{\OK}\\
+    s(X) \leftarrow \neg r(X), \alert<10>{p(X,Y)}, \alert<10>{q(Y)} & & \only<11->{\OK}\\
   \end{array}
 \]
 \bigskip
