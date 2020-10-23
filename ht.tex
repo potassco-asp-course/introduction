@@ -1,0 +1,104 @@
+% ----------------------------------------------------------------------
+\begin{frame}{The logic of Here-and-There (\HT)}
+  \begin{itemize}
+  \item<1-> An \alert{interpretation} is a pair \tuple{H,T} of sets of atoms with $H \subseteq T$
+    \begin{itemize}
+    \item $H$ is called ``here'' and
+    \item $T$ is called ``there''
+    \end{itemize}
+  \item<2-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
+    \medskip
+  \item<3-> \structure{Intuition} \
+    \begin{itemize}
+    \item $H$ represents provably true atoms
+    \item $T$ represents possibly true atoms
+    \item atoms not in $T$ are false
+    \end{itemize}
+    \medskip
+  \item<4-> \structure{Idea}
+    \begin{itemize}
+    \item $\tuple{H,T}\models\varphi\quad \sim\quad \varphi$ is provably true
+    \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[5], that is, classically true
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Satisfaction}
+  \begin{itemize}
+  \item $\tuple{H,T} \models a$ if $a \in H$ \hfill for any atom $a$
+  \item $\tuple{H,T} \models \varphi \wedge \psi$ if
+    $\tuple{H,T} \models \varphi$
+    and
+    $\tuple{H,T} \models \psi$
+  \item $\tuple{H,T} \models \varphi \vee \psi$ if
+    $\tuple{H,T} \models \varphi$
+    or
+    $\tuple{H,T} \models \psi$
+
+    \smallskip
+
+  \item $\tuple{H,T} \models \varphi \rightarrow \psi$ if
+    $\tuple{X,T} \models \varphi$ implies $\tuple{X,T} \models \psi$
+    \\\qquad\qquad
+    for both $X=H,T$
+
+    \bigskip
+
+  \item<2> \structure{Note} \ $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
+    \hfill since $\neg\varphi = \varphi\to\bot$
+
+    \bigskip
+
+  \item<3-> An interpretation \tuple{H,T} is a \alert{model} of $\varphi$, if $\tuple{H,T} \models \varphi$
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Classical tautologies}
+\centering
+  \[
+    \begin{array}{| c | c || c | c | c | c | c |}
+      \hline
+      H         & T          & a      & \neg a & \alert{a \vee \neg a} & \neg\neg a & \alert{a \leftarrow \neg\neg a}
+      \\\hline\hline
+      \{ a \}   & \{ a \}    & \true  & \false & \true                 & \true      & \true
+      \\\hline
+      \emptyset & \{ a \}    & \false & \false & \alert{\false}        & \true      & \alert{\false}
+      \\\hline
+      \emptyset & \emptyset  & \false & \true  & \true                 & \false     & \true
+      \\\hline
+    \end{array}
+  \]
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Equilibrium models}
+  \begin{itemize}
+  \item A total interpretation $\tuple{ T,T}$ is an \alert{equilibrium model}
+    of\\ a formula $\varphi$,
+    if
+    \par
+    \smallskip
+    \begin{enumerate}\normalsize
+    \item
+      \(
+      \tuple{ T,T}\models\varphi
+      \),
+    \item
+      \(
+      \tuple{H,T}\not\models\varphi
+      \)
+      for all $H\subset T$
+    \end{enumerate}
+    \smallskip
+  \item <2-> $T$ is called a \alert{stable model} of $\varphi$
+    \bigskip
+  \item<3-> \structure{Note} \ $\tuple{T,T}$ acts as a classical model
+    \smallskip
+  \item<4-> \structure{Note} \ $\tuple{H,T} \models P$ iff $H \models P^T$ \hfill ($P^T$ is the reduct of $P$ by $T$)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

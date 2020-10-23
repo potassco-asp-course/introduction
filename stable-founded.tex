@@ -1,0 +1,255 @@
+\newcommand{\STROUT}[2]{\alt<#1>{\text{\textcolor{red}{\sout{\ensuremath{\{#2\}}}}}}{\ensuremath{\{#2\}}}}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Intuition}
+  \begin{itemize}
+  \item A logic program is associated with a set of \alert{answer sets} induced
+    \par by their applying rules
+    \smallskip
+  \item The concept of an answer set is fixed by a criterion rather than
+    \par a construction process
+    \medskip
+  \item<2-> An answer set is an interpretation of all atoms with true or false
+    \par such that
+    \begin{itemize}\normalsize
+    \item all rules are satisfied and
+    \item all true atoms are founded
+    \end{itemize}
+    \medskip
+  \item<3-> \structure{Note} \ Foundedness in database systems
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Interpretation}
+  \begin{itemize}
+  \item An \alert{interpretation} associates each atom with either the truth value \textit{true} or \textit{false}
+  \item<2-> \structure{Example}
+    \par
+    \begin{tabular}{rcl}\normalsize
+      \lstinline{answer(42)}            & $\mapsto$ & \textit{true}\\
+      \lstinline{bachelor(friend(joe))} & $\mapsto$ & \textit{false}\\
+      \lstinline{hot}                   & $\mapsto$ & \textit{false}\\
+    \end{tabular}
+  \item <3> \structure{Note} \ Compare with poetry and arithmetic, eg \ $\textrm{IX}\mapsto \textit{``}\;9\textit{''}$
+  \item <4-> We represent an interpretation by the set of its true atoms
+    \medskip
+  \item <5-> \structure{Example} \
+    \(
+      \{\,\texttt{answer(42)}\,\}
+    \)
+  \item[]<5-> \structure{Note} \ \lstinline{bachelor(friend(joe))} and \lstinline{hot} are left out
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Model}
+  \begin{itemize}
+  \item A \alert{model} of a logic program is an interpretation that satisfies
+    \par each rule in the program
+    \smallskip
+  \item<2-> An interpretation $X$ \alert{satisfies} a rule
+    \[
+      {\tt a\texttt{ :- } b_1,\dots,b_m,\texttt{ not }{c_{m+1}},\dots,\texttt{ not }{c_n}.}
+    \]
+    whenever the following condition holds
+    \[
+      \mathtt{a}\in X \textbf{ if } \mathtt{b_1}\in X,\dots,\mathtt{b_m}\in X\textbf{ and }\mathtt{c_1}\notin X,\dots,\mathtt{c_n}\notin X
+      % \hfill (\textnormal{SAT})\quad
+    \]
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rule
+    \[
+      {\tt a\texttt{ :- } b,\texttt{ not }c.}
+      \pause\quad\equiv\quad
+      \mathtt{a}\in X \textbf{ if } \mathtt{b}\in X\textbf{ and }\mathtt{c}\notin X
+    \]
+  \item <3-> This rule has seven models
+    \begin{align*}
+      &\{\}\\
+      &\{c\}\\
+      &\STROUT{4}{b}\\
+      &\{b,c\}\\
+      &\{a\}\\
+      &\{a,c\}\\
+      &\{a,b\}\\
+      &\{a,b,c\}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rules
+    \begin{align*}
+      &{\tt b.}\\
+      &{\tt a\texttt{ :- } b,\texttt{ not }c.}
+    \end{align*}
+  \item <2-> This rule has three models
+    \begin{align*}
+      &\STROUT{3-}{}\\
+      &\STROUT{3-}{c}\\
+      &\STROUT{4-}{b}\\
+      &\{b,c\}\\
+      &\STROUT{3-}{a}\\
+      &\STROUT{3-}{a,c}\\
+      &\{a,b\}\\
+      &\{a,b,c\}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rules
+    \begin{align*}
+      &{\tt b.\quad   c.}\\
+      &{\tt a\texttt{ :- } b,\texttt{ not }c.}
+    \end{align*}
+  \item <2-> This rule has two models
+    \begin{align*}
+      &\STROUT{3-}{}\\
+      &\STROUT{3-}{c}\\
+      &\STROUT{3-}{b}\\
+      &\{b,c\}\\
+      &\STROUT{3-}{a}\\
+      &\STROUT{3-}{a,c}\\
+      &\STROUT{3-}{a,b}\\
+      &\{a,b,c\}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Stable model}
+  \begin{itemize}
+  \item An interpretation is \alert{founded} by a logic program,
+    \par\smallskip
+    if it is the smallest set $X$ satisfying the following properties
+    \smallskip
+    \begin{enumerate}\normalsize
+    \item $\texttt{a}\in X$\textbf{ if }`\texttt{a.}' is a fact
+      \medskip
+    \item $\texttt{a}\in X$\textbf{ if }`${\tt a\texttt{ :- } b_1,\dots,b_m,\,\texttt{not}\,c_{m+1},\dots,\,\texttt{not}\,c_n.}$' is a rule
+      \par\smallskip
+      such that
+      \begin{enumerate}\normalsize
+      \item $\mathtt{b_1},\dots,\mathtt{b_m}$ is founded and
+      \item $\mathtt{c_1}\notin X,\dots,\mathtt{c_n}\notin X$
+      \end{enumerate}
+    \end{enumerate}
+    \medskip
+  \item<2-> \structure{Note} \ Foundedness relies foremost on atoms within $X$
+
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rule
+    \[
+      {\tt a\texttt{ :- } b,\texttt{ not }c.}
+    \]
+  \item <3-> This rule has one stable models
+    \begin{align*}
+      &\{\}\\
+      &\STROUT{4-}{c}\\
+      &\STROUT{3-}{b}\\
+      &\STROUT{4-}{b,c}\\
+      &\STROUT{5-}{a}\\
+      &\STROUT{4-}{a,c}\\
+      &\STROUT{4-}{a,b}\\
+      &\STROUT{4-}{a,b,c}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rules
+    \begin{align*}
+      &{\tt b.}\\
+      &{\tt a\texttt{ :- } b,\texttt{ not }c.}
+    \end{align*}
+  \item <2-> This rule has one stable model
+    \begin{align*}
+      &\STROUT{3-}{}\\
+      &\STROUT{3-}{c}\\
+      &\STROUT{3-}{b}\\
+      &\STROUT{4-}{b,c}\\
+      &\STROUT{3-}{a}\\
+      &\STROUT{3-}{a,c}\\
+      &\{a,b\}\\
+      &\STROUT{4-}{a,b,c}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Example}
+  \begin{itemize}
+  \item Consider the rules
+    \begin{align*}
+      &{\tt b.\quad   c.}\\
+      &{\tt a\texttt{ :- } b,\texttt{ not }c.}
+    \end{align*}
+  \item <2-> This rule has one stable model
+    \begin{align*}
+      &\STROUT{3-}{}\\
+      &\STROUT{3-}{c}\\
+      &\STROUT{3-}{b}\\
+      &\{b,c\}\\
+      &\STROUT{3-}{a}\\
+      &\STROUT{3-}{a,c}\\
+      &\STROUT{3-}{a,b}\\
+      &\STROUT{4-}{a,b,c}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{About answer sets}
+  \bigskip
+  \begin{itemize}
+  \item An answer set is a model of a logic program
+    \smallskip
+  \item An answer set is a subset of the head atoms of all rules\par in a logic program
+    \smallskip
+  \item A logic program can have zero, one, or (exponentially)\par many answer sets
+    \smallskip
+  \item Two answer sets of the same logic program are never\par contained in each other
+    \footnote{This becomes untrue when considering choices}
+    \bigskip
+  \item<2-> \structure{Note} \ Answer sets may emerge when adding rules
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Exemplars}
+  \centering
+  \begin{tabular}{|ll|l|}
+    \hline
+    \multicolumn{2}{|l|}{Logic program} & Answer sets\\
+    \hline
+    \hline
+    \texttt{a.}          &                      & \{\texttt{a}\}\\
+    \hline
+    \texttt{a :- b.}     &                      & \{\}\\
+    \hline
+    \texttt{a :- b.}     & \texttt{b.}          & \{\texttt{a,b}\}\\
+    \hline
+    \texttt{a :- b.}     & \texttt{b :- a.}     & \{\}\\
+    \hline
+    \texttt{a :- not c.} &                      & \{\texttt{a}\}\\
+    \hline
+    \texttt{a :- not c.} & \texttt{c.}          & \{\texttt{c}\}\\
+    \hline
+    \texttt{a :- not c.} & \texttt{c :- not a.} & \{\texttt{a}\}, \{\texttt{c}\}\\
+    \hline
+    \texttt{a :- not a.} &                      & \\
+    \hline
+  \end{tabular}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

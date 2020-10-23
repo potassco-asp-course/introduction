@@ -1,0 +1,232 @@
+% ----------------------------------------------------------------------
+\begin{frame}{\only<1>{Propositional Normal} Logic Programs}
+  \begin{itemize}
+  \item<2->
+    A \alert{logic program}~$P$ is a \alert{set of rules} of the form
+    \[\large
+    \underbrace{a\raisebox{-4pt}{}}_{\text{\alert{head}}}\leftarrow\underbrace{\raisebox{-4pt}{\ }b_1,\dots,b_m,\neg c_1,\dots,\neg c_n\raisebox{-4pt}{\ }}_{\alert{\text{body}}}
+    \]
+    \begin{itemize}
+    \item $a$ and all $b_i,c_j$ are \alert{atoms} (propositional variables)
+    \item \alert{$\leftarrow$}, \alert{$,$}, \alert{$\neg$} denote \alert{if}, \alert{and}, and \alert{default negation}
+    \item intuitive reading: \alert{head} must be true \alert{if body} holds
+    \end{itemize}
+    \medskip
+  \item<3->
+    Semantics given by \alert{stable models}, informally,\\
+    sets $X$ of atoms such that % \\[-2mm]
+    \begin{itemize}
+    \item $X$ is a (classical) model of $P$ and
+    \item each atom in $X$ is justified by some rule in $P$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[t]{Logic Programs as Propositional Formulas}
+\bigskip
+\alt<8->{
+\(
+{
+\begin{array}{r@{}c@{}l@{\quad}l@{\quad}l@{\quad}l@{\quad}l@{\quad}}
+\uncover<7>{P
+& {} = {} &
+\big\{
+a\leftarrow \neg b
+&
+b\leftarrow \neg a
+&
+x\leftarrow a,\neg c
+&
+x\leftarrow y
+&
+y\leftarrow x,b
+\big\}
+\\[2mm]}
+\makebox[2em]{\CF{P}\enspace}
+& {} = {} &
+\multicolumn{5}{l}{\mkern-8mu
+\big\{a\leftrightarrow
+    \big(
+       \mbox{$\bigvee_{(a\leftarrow B)\in P}$}\BF{B}
+    \big)
+  \mid a\in\atom{P}
+\big\}}
+\\[1mm]
+\makebox[2em]{\BF{B}\enspace}
+& {} = {} &
+\multicolumn{5}{l}{\mkern-8mu
+      \mbox{$\bigwedge_{b\in B\cap\atom{P}}$}b \wedge
+      \mbox{$\bigwedge_{\neg c\in B}$}\neg c
+}
+\\[1mm]
+\makebox[2em]{\LF{P}\enspace}
+& {} = {} &
+\multicolumn{5}{l}{\mkern-8mu
+  \big\{
+  \big(
+    \mbox{$\bigvee_{a \in L}$} a
+  \big)
+  \rightarrow
+%  \neg
+  \big(
+    \mbox{$\bigvee_{a\in L,(a\leftarrow B)\in P,B\cap L=\emptyset}$}\BF{B}
+  \big)
+  \mid L \in \mathit{loop}(P)
+  \big\}
+}
+\\
+\end{array}
+}
+\)
+}{
+\(
+{
+\begin{array}{r@{}c@{}l@{\quad}l@{\quad}l@{\quad}l@{\quad}l@{\quad}}
+P
+& {} = {} &
+\big\{
+a\leftarrow \neg b
+&
+b\leftarrow \neg a
+&
+x\leftarrow \alert<5-6>{a},\neg c
+&
+\alert<5-6>{x}\leftarrow \alert<5-6>{y}
+&
+\alert<5-6>{y}\leftarrow \alert<5-6>{x},b
+\big\}
+\\[2mm]
+\uncover<2->{
+\makebox[2em]{\alt<2-3>{\RF{P}}{\CF{P}}\enspace}
+& {} = {} &
+\big\{
+a\alt<4->{\leftrightarrow}{\leftarrow} \neg b
+&
+b\alt<4->{\leftrightarrow}{\leftarrow} \neg a
+&
+\multicolumn{2}{l}{\mkern-7mu x\alt<4->{\leftrightarrow}{\leftarrow} (a\wedge\neg c)\vee y}
+&
+y\alt<4->{\leftrightarrow}{\leftarrow} x\wedge b\big\}
+\\[1mm]
+}
+\uncover<4->{
+& {} \cup {} &
+\big\{
+c\leftrightarrow \bot
+\big\}
+}
+\\[1mm]
+\uncover<6->{
+\makebox[2em]{\LF{P}\enspace}
+& {} = {} &
+\multicolumn{5}{l}{\mkern-7mu
+\big\{
+(x\vee y)\rightarrow a\wedge\neg c
+\big\}}
+\\[-2mm]
+}
+\end{array}
+}
+\)
+}
+\\\smallskip
+\uncover<2->{
+\uncover<1-7>{Classical models of \makebox[\widthof{$\CF{P}\cup\LF{P}$}][l]{$\alt<2-4>{\RF{P}\!:}{\alt<7->{\CF{P}\cup\LF{P}\!:}{\CF{P}\!:}}$}\only<2>{\hfill(only true atoms shown)}}
+\begin{minipage}[b][10cm][t]{\textwidth}
+\vspace*{1mm}
+\alt<8->{
+\begin{beamerboxesrounded}[upper=block title, lower=block body]{Theorem (Lin and Zhao)}
+Let $P$ be a normal logic program and $X\subseteq\atom{P}$.
+
+Then, $X$ is a stable model of $P$ iff $X\models\CF{P}\cup\LF{P}$.
+\end{beamerboxesrounded}
+\begin{itemize}
+  \item Size of $\CF{P}$ is \alert{linear} in the size of $P$
+  \item Size of $\LF{P}$ may be \alert{exponential} in the size of $P$~\nocite{lifraz04a}
+\end{itemize}
+}{
+$\{b\}$,
+\uncover<2-4>{$\{b,\alert<3-4>{c}\}$,}
+\uncover<2-6>{$\{b,\alert<5-6>{x},\alert<5-6>{y}\}$,}
+\uncover<2-4>{$\{b,\alert<3-4>{c},x,y\}$,
+$\{a,\alert<3-4>{c}\}$,
+$\{a,b,\alert<3-4>{c}\}$,}
+$\{a,x\}$\uncover<2-4>{,
+$\{a,\alert<3-4>{c},x\}$,
+$\{a,x,\alert<3-4>{y}\}$,
+$\{a,\alert<3-4>{c},x,y\}$,
+$\{a,\alert<3-4>{b},x,y\}$,
+$\{a,b,\alert<3-4>{c},x,y\}$}
+\medskip
+\begin{itemize}
+ \item<3-> \alt<5->{\sout{Unsupported atoms}}{\alert<3,4>{Unsupported atoms}}
+ \item<5-> \alt<7->{\sout{Unfounded atoms}}{\alert<5,6>{Unfounded atoms}}
+\end{itemize}
+}
+\end{minipage}
+}
+\end{frame}
+% ----------------------------------------------------------------------
+% \begin{frame}[fragile]{Let's run it!}
+% \footnotesize
+% \pause
+% \begin{semiverbatim}
+% $ cat prg.lp
+%
+% \uncover<3->{\alert<3>{a :- not b.    b :- not a.    x :- a, not c.    x :- y.    y :- x, b.}}
+% \end{semiverbatim}
+% \pause[4]
+% \begin{semiverbatim}
+% $ clingo 0 prg.lp
+% \uncover<5->{
+% clingo version 4.5.0
+% Reading from prg.lp
+% Solving...
+% Answer: 1
+% \alert<5>{a x}
+% Answer: 2
+% \alert<5>{b}
+% SATISFIABLE
+%
+% Models       : 2
+% Calls        : 1
+% Time         : 0.000s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+% CPU Time     : 0.000s}
+% \end{semiverbatim}
+% \end{frame}
+% ----------------------------------------------------------------------
+% \begin{frame}{Genuine Stable Models Semantics}
+%   \begin{itemize}
+%   \item<2-> The reduct $\reduct{\phi}{X}$ of a formula $\phi$ relative to a set $X$ of atoms \pause[3]
+%     \\ is defined as follows
+%     \[
+%     \begin{array}{ll}
+%       \reduct{\phi}{X}=\bot &  \text{if $X\not\models \phi$}\\
+%       \reduct{\phi}{X}=\phi &  \text{if  $\phi\in X$}\\
+%       \reduct{\phi}{X}=(\reduct{\psi}{X} \circ \reduct{\mu}{X}) &
+%                                                                   \text{if  $X\models \phi$ and  $\phi=(\psi\circ \mu)$ for $\circ\in\{\wedge,\vee,\rightarrow\}$}\\
+%       \reduct{\phi}{X}=\top & \text{if $X\not\models \psi$ and $\phi=\neg \psi$}
+%     \end{array}
+%     \]
+%   \end{itemize}
+%   \uncover<4->{\vspace{-5pt}%
+%   \begin{beamerboxesrounded}[upper=block title, lower=block body]{Definition (Gelfond and Lifschitz et al.)}
+%     Let $\Phi$ be a formula and $X\subseteq\atom{\Phi}$.
+%
+%     Then, $X$ is a stable model of $\Phi$ if $X$ is a $\subseteq$-minimal model of~$\reduct{\Phi}{X}$
+%   \end{beamerboxesrounded}}
+%   \medskip
+%   \begin{itemize}
+%   \item<5-> \structure{Note} \
+%     % \only<5>{\quad$a\vee\neg a$ is no tautology}
+%     % \only<6>{$\neg a\vee\neg \neg a$ is a tautology}
+%     % \only<7>
+%     {$a$ and $\neg \neg a$ are not the same}
+%   \end{itemize}
+% \end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

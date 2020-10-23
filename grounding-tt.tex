@@ -1,0 +1,73 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Ground instantiation}
+  Let $P$ be a logic program
+  \begin{itemize}
+  \item<1-> Let $\mathcal{T}$ be a set of variable-free \alert<1-2>{terms}
+  \item<1-> Let $\mathcal{A}$ be a set of variable-free \alert<1-2>{atoms} constructible from $\mathcal{T}$
+    \smallskip
+  \item<2-> A variable-free atom is also called \alert{ground}
+    \medskip
+  \item<3-> \alert<3>{Ground instances} of $r\in P$\,: Set of variable-free rules obtained by
+    replacing all variables in $r$ by elements from $\mathcal{T}$:
+    \[
+    \mathit{ground}(r)=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
+    \]
+    where $\mathit{var}(r)$ stands for the set of all variables occurring in $r$;
+
+    $\theta$ is a (ground) substitution
+    \medskip
+  \item<4-> \alert{Ground instantiation} of $P$\,: \
+    \(
+    \mathit{ground}(P)=\textstyle\bigcup_{r\in P}\mathit{ground}(r)
+    \)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{An example}
+  \small
+  \[
+    \begin{array}{@{}r@{\,}c@{\,}l}
+      P
+      &=&
+          \left\{
+          \tt
+          \ r(a,b).\;,\ r(b,c).\;,\ t(X,Y)\;\texttt{:-}\;r(X,Y). \
+          \right\}
+      \\[1ex]
+      \mathcal{T}&=&\{\tt a,b,c\}
+      \\[1ex]
+      \mathcal{A}&=&\left\{
+                     \begin{array}{@{\,}c@{\,}}
+                       \tt r(a,a),r(a,b),r(a,c), r(b,a),r(b,b),r(b,c), r(c,a),r(c,b),r(c,c),\!
+                       \\
+                       \tt\!\! t(a,a),t(a,b),t(a,c), t(b,a),t(b,b),t(b,c), t(c,a),t(c,b),t(c,c)
+                     \end{array}
+      \right\}
+    \end{array}
+  \]
+  \pause
+  \[
+    \mathit{ground}(P)
+    =
+    \left\{
+      \begin{array}{l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}}
+        \tt r(a,b).&,& &&&\\
+        \tt r(b,c).&,& &&&\\
+        \tt \onslide<-2>{t(a,a)}              &\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(a,a),}&\tt\onslide<-2>{t(b,a)}              &\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(b,a),}&\tt\onslide<-2>{t(c,a)}&\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(c,a),} \\
+        \tt              t(a,b)\onslide<4->{.}&\tt \alt<4->{,}{\texttt{:-}}&\tt\onslide<-3>{r(a,b),}&\tt\onslide<-2>{t(b,b)}              &\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(b,b),}&\tt\onslide<-2>{t(c,b)}&\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(c,b),} \\
+        \tt \onslide<-2>{t(a,c)}              &\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(a,c),}&\tt             t(b,c)\onslide<4->{.}&\tt\onslide<-3>{\texttt{:-}}&\tt\onslide<-3>{r(b,c),}&\tt\onslide<-2>{t(c,c)}&\tt\onslide<-2>{\texttt{:-}}&\tt\onslide<-2>{r(c,c)}
+      \end{array}
+    \right\}
+  \]
+
+  \begin{itemize}
+  \item<5-> \alert{Grounding} aims at reducing the ground instantiation
+  \end{itemize}
+
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
