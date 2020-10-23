@@ -1,0 +1,78 @@
+% ----------------------------------------------------------------------
+\begin{frame}{\only<1>{Propositional} \only<1,4>{Normal} Logic Programs}
+  \begin{itemize}
+  \item<2->
+    A \alert{logic program}~$P$ is a \alert{set of rules} of the form
+    \[\large
+    \underbrace{a\raisebox{-4pt}{}}_{\text{\alert{head}}}\leftarrow\underbrace{\raisebox{-4pt}{\ }b_1,\dots,b_m,\neg{c_1},\dots,\neg{c_n}\raisebox{-4pt}{\ }}_{\alert{\text{body}}}
+    \]
+    \begin{itemize}
+    \item $a$ and all $b_i,c_j$ are \alert{atoms} (propositional variables)
+    \item \alert{$\leftarrow$}, \alert{$,$}, \alert{$\neg$} denote \alert{if}, \alert{and}, and \alert{negation}
+    \item intuitive reading: \alert{head} must be true \alert{if body} holds
+    \end{itemize}
+    \medskip
+  \item<3->
+    Semantics given by \alert{stable models}, informally,\\
+    models of $P$ justifying each true atom by some rule in $P$
+    \bigskip
+  \item<only@4> \structure{Disclaimer} The following formalities apply to normal logic programs
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Some truth tabling, back to SAT}
+\vspace{-5pt}
+\[\qquad
+  \begin{array}{ccc|r@{\;}c@{\;}l}
+    a&b&c& \ (\neg b\to a) &\wedge& (b\to c) \ \\
+    \hline
+                       \false &                   \false &                   \false &\only<2-4>{\color<4>{red}{  (\only<2>{\neg\false}\only<3->{\true}\to\false)}}\only<5-7>{\false}&\only<2-7>{\wedge}\only<8-9>{              \false }&\only<2-6>{\color<6>{green}{(\false\to\false)}}\only<7-7>{\true}\\
+                       \false &                   \false &                   \true &\only<2-4>{\color<4>{red}{  (\only<2>{\neg\false}\only<3->{\true}\to\false)}}\only<5-7>{\false}&\only<2-7>{\wedge}\only<8-9>{              \false }&\only<2-6>{\color<6>{green}{(\false\to\true)}}\only<7-7>{\true}\\
+                       \false &                   \true &                   \false &\only<2-6>{\color<6>{green}{(\only<2>{\neg\true}\only<3->{\false}\to\false)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{              \false }&\only<2-4>{\color<4>{red}{  (\true\to\false)}}\only<5-7>{\false}\\
+    \color<8-9>{green}{\false}&\color<8-9>{green}{\true}&\color<8-9>{green}{\true}&\only<2-6>{\color<6>{green}{(\only<2>{\neg\true}\only<3->{\false}\to\false)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{\color{green}{\true}}&\only<2-6>{\color<6>{green}{(\true\to\true)}}\only<7-7>{\true}\\
+    \color<8-9>{green}{\true}&\color<8-9>{green}{\false}&\color<8-9>{green}{\false}&\only<2-6>{\color<6>{green}{(\only<2>{\neg\false}\only<3->{\true}\to\true)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{\color{green}{\true}}&\only<2-6>{\color<6>{green}{(\false\to\false)}}\only<7-7>{\true}\\
+    \color<8-9>{green}{\true}&\color<8-9>{green}{\false}&\color<8-9>{green}{\true}&\only<2-6>{\color<6>{green}{(\only<2>{\neg\false}\only<3->{\true}\to\true)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{\color{green}{\true}}&\only<2-6>{\color<6>{green}{(\false\to\true)}}\only<7-7>{\true}\\
+                       \true &                   \true &                   \false &\only<2-6>{\color<6>{green}{(\only<2>{\neg\true}\only<3->{\false}\to\true)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{              \false }&\only<2-4>{\color<4>{red}{  (\true\to\false)}}\only<5-7>{\false}\\
+    \color<8-9>{green}{\true}&\color<8-9>{green}{\true}&\color<8-9>{green}{\true}&\only<2-6>{\color<6>{green}{(\only<2>{\neg\true}\only<3->{\false}\to\true)}}\only<7-7>{\true}&\only<2-7>{\wedge}\only<8-9>{\color{green}{\true}}&\only<2-6>{\color<6>{green}{(\true\to\true)}}\only<7-7>{\true}
+  \end{array}
+\]
+\begin{itemize}
+\item<only@9>
+We get four models:
+$\{b,c\}$,
+$\{a\}$,
+$\{a,c\}$, and
+$\{a,b,c\}$
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Some truth tabling, and now ASP}
+\vspace{-5pt}
+\[\qquad
+  \begin{array}{ccc|r@{\;}c@{\;}l@{}l}
+    a&b&c& \ (\neg b\to a) &\wedge& (b\to c) \ & \\
+    \cline{1-6}
+                       \color<11       >{red}{  \false} &                   \color<11       >{green}{\false} &                   \color<11     >{green}{\false} &                 \only<2-3>{(}\only<2>{\neg\false}\only<3-3>{\true}\only<2-3>{\to}\only<2- >{a}\only<2-3>{)}                 &\only<2- >{\wedge}&\only<2->{(b\to c)}&\only<  11>{\models a}\\
+                       \color<11       >{red}{  \false} &                   \color<11       >{green}{\false} &                   \color<11     >{red}{  \true} &                 \only<2-3>{(}\only<2>{\neg\false}\only<3-3>{\true}\only<2-3>{\to}\only<2- >{a}\only<2-3>{)}                 &\only<2- >{\wedge}&\only<2->{(b\to c)}&\only<  11>{\models a}\\
+                       \color<11       >{green}{\false} &                   \color<11       >{red}{  \true} &                   \color<11     >{green}{\false} &\color<5>{green}{\only<2-5>{(}\only<2>{\neg\true}\only<3-5>{\false}\only<2-5>{\to}\only<2-5>{a}\only<2-5>{)}}\only<6>{\true}&\only<2-6>{\wedge}&\only<2->{(b\to c)}&\only<  11>{\models  }\\
+                       \color<8-9,10-11>{green}{\false} &\color<8-9>{green}{\color<10-11    >{red}{  \true}}&\color<8-9>{green}{\color<10-11  >{red}{  \true}}&\color<5>{green}{\only<2-5>{(}\only<2>{\neg\true}\only<3-5>{\false}\only<2-5>{\to}\only<2-5>{a}\only<2-5>{)}}\only<6>{\true}&\only<2-6>{\wedge}&\only<2->{(b\to c)}&\only<9-11>{\models  }\\
+                       \color<8-9,10-  >{green}{\true} &                   \color<8-9,10-  >{green}{\false} &                   \color<8-9,10->{green}{\false} &                 \only<2-3>{(}\only<2>{\neg\false}\only<3-3>{\true}\only<2-3>{\to}\only<2- >{a}\only<2-3>{)}                 &\only<2- >{\wedge}&\only<2->{(b\to c)}&\only<9-  >{\models a}\only<12->{\quad\alert{\text{Stable model}}}\\
+                       \color<8-9,10-11>{green}{\true} &                   \color<8-9,10-11>{green}{\false} &\color<8-9>{green}{\color<10-11  >{red}{  \true}}&                 \only<2-3>{(}\only<2>{\neg\false}\only<3-3>{\true}\only<2-3>{\to}\only<2- >{a}\only<2-3>{)}                 &\only<2- >{\wedge}&\only<2->{(b\to c)}&\only<9-11>{\models a}\\
+                       \color<11       >{red}{  \true} &                   \color<11       >{red}{  \true} &                   \color<11     >{green}{\false} &\color<5>{green}{\only<2-5>{(}\only<2>{\neg\true}\only<3-5>{\false}\only<2-5>{\to}\only<2-5>{a}\only<2-5>{)}}\only<6>{\true}&\only<2-6>{\wedge}&\only<2->{(b\to c)}&\only<  11>{\models  }\\
+    \color<8-9>{green}{\color<10-11    >{red}{  \true}}&\color<8-9>{green}{\color<10-11    >{red}{  \true}}&\color<8-9>{green}{\color<10-11  >{red}{  \true}}&\color<5>{green}{\only<2-5>{(}\only<2>{\neg\true}\only<3-5>{\false}\only<2-5>{\to}\only<2-5>{a}\only<2-5>{)}}\only<6>{\true}&\only<2-6>{\wedge}&\only<2->{(b\to c)}&\only<9-11>{\models  }\\
+    \multicolumn{3}{c}{}                                                                                                                                        &\multicolumn{3}{c}{\only<7->{\alert{\text{Reduct}}}}                                                                                                                 &
+  \end{array}
+\]
+\begin{itemize}
+\item<only@12-> We get one stable model:
+$\{a\}$
+\item<only@13>
+Stable models = Smallest models of (respective) reducts
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
