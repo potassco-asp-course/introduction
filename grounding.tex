@@ -1,0 +1,73 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Ground instantiation}
+  Let $P$ be a logic program
+  \begin{itemize}
+  \item<1-> Let $\mathcal{T}$ be a set of \invisible<2>{(}variable-free\invisible<2>{)} \alert<1-2>{terms}\visible<2>{ (also called \alert{Herbrand universe})}
+  \item<1-> Let $\mathcal{A}$ be a set of                (variable-free) \alert<1-2>{atoms} constructible from $\mathcal{T}$
+    \only<2>{\\ (also called \alert{alphabet} or \alert{Herbrand base})}
+    \smallskip
+  \item<3-> A variable-free atom is also called \alert{ground}
+    \medskip
+  \item<4-> \alert<4>{Ground instances} of $r\in P$\,: Set of variable-free rules obtained by
+    replacing all variables in $r$ by elements from $\mathcal{T}$:
+    \[
+    \mathit{ground}(r)=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
+    \]
+    where $\mathit{var}(r)$ stands for the set of all variables occurring in $r$;
+
+    $\theta$ is a (ground) substitution
+    \medskip
+  \item<5-> \alert{Ground instantiation} of $P$\,: \
+    \(
+    \mathit{ground}(P)=\textstyle\bigcup_{r\in P}\mathit{ground}(r)
+    \)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{An example}
+  \small
+  \[
+    \begin{array}{@{}r@{\,}c@{\,}l}
+      P
+      &=&
+          \left\{
+          \ r(a,b)\leftarrow, \ r(b,c)\leftarrow, \ t(X,Y) \leftarrow r(X,Y) \
+          \right\}
+      \\[1ex]
+      \mathcal{T}&=&\{a,b,c\}
+      \\[1ex]
+      \mathcal{A}&=&\left\{
+                     \begin{array}{@{\,}c@{\,}}
+                       r(a,a),r(a,b),r(a,c), r(b,a),r(b,b),r(b,c), r(c,a),r(c,b),r(c,c),
+                       \\
+                       \!\! t(a,a),t(a,b),t(a,c), t(b,a),t(b,b),t(b,c), t(c,a),t(c,b),t(c,c)
+                     \end{array}
+      \right\}
+    \end{array}
+  \]
+  \pause
+  \[
+    \mathit{ground}(P)
+    =
+    \left\{
+      \begin{array}{l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}}
+        r(a,b)&\leftarrow&, &&&\\
+        r(b,c)&\leftarrow&, &&&\\
+        \onslide<-2>{t(a,a)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(a,a),}&\onslide<-2>{t(b,a)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(b,a),}&\onslide<-2>{t(c,a)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(c,a),}\\
+        t(a,b) &             \leftarrow & \alt<4->{,}{r(a,b),}&\onslide<-2>{t(b,b)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(b,b),}&\onslide<-2>{t(c,b)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(c,b),}\\
+        \onslide<-2>{t(a,c)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(a,c),}&             t(b,c) &             \leftarrow &\onslide<-3>{r(b,c),}&\onslide<-2>{t(c,c)}&\onslide<-2>{\leftarrow}&\onslide<-2>{r(c,c)}
+      \end{array}
+    \right\}
+  \]
+
+  \begin{itemize}
+  \item<5-> \alert{Grounding} aims at reducing the ground instantiation
+  \end{itemize}
+
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../asp"
+%%% End:
