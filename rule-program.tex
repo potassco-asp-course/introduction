@@ -18,18 +18,19 @@
     where $0\leq m\leq n$ and each $a_i\in{\mathcal{A}}$ is an \alert{atom} for $0\leq i\leq n$
   \item <only@5-7> A \alert{literal} is an atom or a negated atom
   \item <only@6-7> \structure{Note} \ A body is a (finite) \alert{set} of literals
-  \item <only@9-16>\structure{Notation}\normalsize
+  \item <only@9-17>\structure{Notation}\normalsize
     \begin{align*}
-      \only<9-15 >{  \head{r}\phantom{^+} &=\, a_0}
-      \only<9-13 >{\\\body{r}\phantom{^+} &=\, \{a_1,\dots,a_m,\neg a_{m+1},\dots,\neg a_n\}}
-      \only<12   >{\\\Head{P}\phantom{^+} &=\, \{\head{r}\mid r\in P\}
-                   \\\body{P}\phantom{^+} &=\, \{\body{r}\mid r\in P\}}
-      \only<13-15>{\\\pbody{r}            &=\, \{a_1,\dots,a_m\}\\}
-      \only<13-16>{  \nbody{r}            &=\, \{a_{m+1},\dots,a_n\}}
-      \only<14-15>{\\\atom{P}\phantom{^+} &=\, \textstyle\bigcup_{r\in P}\left(\{\head{r}\}\cup\pbody{r}\cup\nbody{r}\right)}
+      \only<9-17 >{  \alt<12,15-16>{\Head{r}}{\head{r}}\phantom{^+} &=\, \only<12,15-16>{\{}a_0\only<12,15-16>{\}}}
+      \only<9-13 >{\\\body{r}\phantom{^+}                           &=\, \{a_1,\dots,a_m,\neg a_{m+1},\dots,\neg a_n\}}
+      \only<13   >{\\\Head{P}\phantom{^+}                           &=\, \{\head{r}\mid r\in P\}
+                   \\\body{P}\phantom{^+}                           &=\, \{\body{r}\mid r\in P\}}
+      \only<14-17>{\\\pbody{r}                                      &=\, \{a_1,\dots,a_m\}\phantom{,\neg a_{m+1},\dots,\neg a_n}\\}
+      \only<14-17>{  \nbody{r}                                      &=\, \{a_{m+1},\dots,a_n\}}
+      \only<15-16>{\\\atom{P}\phantom{^+}                           &=\, \textstyle\bigcup_{r\in P}\left(\Head{r}\cup\pbody{r}\cup\nbody{r}\right)}
     \end{align*}%
-  \item <only@15> \structure{Note} \ We often assume that $\mathcal{A}=\atom{P}$
-  \item <only@16> A program $P$ is \alert{positive} if $\nbody{r}=\emptyset$ for all $r\in P$
+  \item <only@16> \structure{Note} \ We often assume that $\mathcal{A}=\atom{P}$
+    \smallskip
+  \item <only@17-18> A program $P$ is \alert{positive} if $\nbody{r}=\emptyset$ for all $r\in P$
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
