@@ -26,11 +26,11 @@
       \only<9>{, and $\{a,b\}$}
     \end{itemize}
 
-  \item<only@12-> \structure{Procederal attempt\only<34->{ patched}}
-    \only<33>{ --- \ \textcolor{red}{failed}}%
-    \only<63>{ --- \ \textcolor{yellow}{interesting \dots}}
-  \item<only@34-> [] \textbf{guess} $Y$
-  \item<only@13-> [] \textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\only<14->{,\nbody{r}\cap \alt<34->{Y}{X}=\emptyset}\}$ \textbf{in}
+  \item<only@12-> \structure{Procedural attempt\only<39->{ patched}}
+    \only<38>{ --- \ \textcolor{red}{failed}}%
+    \only<68>{ --- \ \textcolor{yellow}{interesting \dots}}
+  \item<only@39-> [] \textbf{guess} $Y$
+  \item<only@13-> [] \textbf{let} $\T{P}{X}=\{\head{r}\mid r\in P, \pbody{r}\subseteq X\only<14->{,\nbody{r}\cap \alt<39->{Y}{X}=\emptyset}\}$ \textbf{in}
     \begin{itemize}\normalsize
     \item []$X := \emptyset$
       \smallskip
@@ -38,40 +38,43 @@
       \begin{itemize}\normalsize
       \item[] $X := {\,\T{P}{X}}$
       \end{itemize}
-    \item[] \only<34->{\textbf{if} $X=Y$ \textbf{then} }\textbf{return} $X$\only<34->{ \textbf{else} \textbf{fail}}
+    \item[] \only<39->{\textbf{if} $X=Y$ \textbf{then} }\textbf{return} $X$\only<39->{ \textbf{else} \textbf{fail}}
     \end{itemize}
     \medskip
-  \item<only@15-32,35-62> \structure{Example} \
-    $P=\{a\leftarrow{},\ b\leftarrow a,\neg c\only<24-32,50->{,\ c\leftarrow b}\}$
+  \item<only@15-37,40-67> \structure{Example} \
+    $P=\{a\leftarrow{},\ b\leftarrow a,\neg c\only<24-37,55->{,\ c\leftarrow b}\}$
     \qquad
-    \only<36-49,51->{$Y=\alt<57->{\{a,b,c\}}{\alt<47-49,54-56>{\{a,b\}}{\alt<44-46>{\{b\}}{\alt<41-43,51-53>{\{a\}}{\emptyset}}}}$}
-    \only<40,43,46,53,56,62>{\ \KO}\only<49>{\ \OK}
+    \only<41-54,56->{$Y=\alt<62->{\{a,b,c\}}{\alt<52-54,59-61>{\{a,b\}}{\alt<49-51>{\{b\}}{\alt<46-48,56-58>{\{a\}}{\emptyset}}}}$}
+    \only<45,48,51,58,61,67>{\ \KO}\only<54>{\ \OK}
 
     \medskip
 
     \begin{tabular}{ccccc}
-      \only<16-22,25-32,37-40,42-43,45-46,48-49,52-53,55-56,57->{\ $X_0=\emptyset$}&
-      \only<18-22,27-32,37-40,42-43,45-46,48-49,52-53,55-56,59->{\ $X_1=\{a\}$}&
-      \only<20-22,29-32,37-40,42-43,45-46,48-49,52-53,55-56    >{\quad $X_2=\{a,b\}$}&
-      \only<      31-32,                        52-53,55-56    >{\quad $X_3=\{a,b,c\}$}&
-      \only<22         ,38-40,42-43,45-46,48-49,            61->{      $X=\{a\only<-60>{,b}\}\only<39-40,42-43,45-46,61-62>{\neq Y}\only<48-49>{=Y}$}\\
-      \only<17-22,26-32,37-40,42-43,45-46,48-49,52-53,55-56,58->{$\T{P}{X_0}=\{a\}$}&
-      \only<19-22,28-32,37-40,42-43,45-46,48-49,52-53,55-56,60->{$\T{P}{X_1}=\{a\only<-59>{,b}\}$}&
-      \only<21-22,30-32,37-40,42-43,45-46,48-49,52-53,55-56    >{$\T{P}{X_2}=\{a,b\only<30-32,52-53,55-56>{,c}\}$}&
-      \only<      32-32,                        52-53,55-56    >{$\T{P}{X_3}=\{a,b\only<      52-53,55-56>{,c}\}$}&
-      \end{tabular}
+      \only<16-22,25-36,42-45,47-48,50-51,53-54,57-58,60-61,62->{\      $X_0=\emptyset$}&
+      \only<18-22,27-36,42-45,47-48,50-51,53-54,57-58,60-61,64->{\      $X_1=\{a    \}$}&
+      \only<20-22,29-36,42-45,47-48,50-51,53-54,57-58,60-61    >{\quad  $X_2=\{a,b  \}$}&
+      \only<      31-36,                        57-58,60-61    >{\quad  $X_3=\{a,b,c\}$}&
+      \only<22         ,43-45,47-48,50-51,53-54,            65->{         $X=\{a\only<-60>{,b}\}\only<44-45,47-48,50-51,66-67>{\neq Y}\only<53-54>{=Y}$}\\
+      \only<17-22,26-36,42-45,47-48,50-51,53-54,57-58,60-61,63->{$\T{P}{X_0}=\{a\}$}&
+      \only<19-22,28-36,42-45,47-48,50-51,53-54,57-58,60-61,65->{$\T{P}{X_1}=\{a\only<           -64>{,b}                            \}$}&
+      \only<21-22,30-36,42-45,47-48,50-51,53-54,57-58,60-61    >{$\T{P}{X_2}=\{a                      ,b \only<30-37,57-58,60-61>{,c}\}$}&
+      \only<      32-36,                        57-58,60-61    >{$\T{P}{X_3}=\{a\only<57-58,60-61   >{,b}\only<32-36,57-58,60-61>{,c}\}$}&
+      \only<33-36>{\\[10pt]
+      &\only<35-36>{$X_5=\{a\}$}&&\only<33-36>{      $X_4 =\{a,c\}$}&\\
+      &\only<36-36>{   \dots   }&&\only<34-36>{$\T{P}{X_4}=\{a  \}$}&}
+    \end{tabular}
 
-    \item<only@64-> \structure{Question} \ Can this idea be used for a logical characterisation\,?
+    \item<only@69-> \structure{Question} \ Can this idea be used for a logical characterization\,?
 
-      \only<65->{%
+      \only<70->{%
       \begin{enumerate}
-      \item<65-> guess $Y$
-      \item<66-> evaluate \nbody{r} of each rule $r\in P$ wrt to $Y$
+      \item<70-> guess $Y$
+      \item<71-> evaluate \nbody{r} of each rule $r\in P$ wrt to $Y$
         \begin{enumerate}
-        \item<67-> if $\nbody{r}\cap Y\neq\emptyset$ drop $r$
-        \item<67-> if $\nbody{r}\cap Y  = \emptyset$ drop $\nbody{r}$ from $r$
+        \item<72-> if $\nbody{r}\cap Y\neq\emptyset$ drop $r$
+        \item<72-> if $\nbody{r}\cap Y  = \emptyset$ drop $\nbody{r}$ from $r$
         \end{enumerate}
-      \item<68-> if $Y=\Cn{P'}$ for the resulting (positive) program $P'$ then \OK\ else \KO\
+      \item<73-> if $Y=\Cn{P'}$ for the resulting (positive) program $P'$ then \OK\ else \KO\
       \end{enumerate}}
 
   \end{itemize}
