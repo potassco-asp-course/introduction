@@ -2,22 +2,23 @@
 \begin{frame}{Ground instantiation}
   Let $P$ be a logic program
   \begin{itemize}
-  \item<1-> Let $\mathcal{T}$ be a set of \invisible<2>{(}variable-free\invisible<2>{)} \alert<1-2>{terms}\visible<2>{ (also called \alert{Herbrand universe})}
-  \item<1-> Let $\mathcal{A}$ be a set of                (variable-free) \alert<1-2>{atoms} constructible from $\mathcal{T}$
-    \only<2>{\\ (also called \alert{alphabet} or \alert{Herbrand base})}
+  \item<1-> Let $\mathcal{T}$ be a set of \invisible<2-3>{(}variable-free\invisible<2-3>{)} \alert<1-2>{terms}
+    \only<2  >{\\ (also called                           \alert{Herbrand universe})}
+  \item<1-> Let $\mathcal{A}$ be a set of \invisible<2-3>{(}variable-free\invisible<2-3>{)} \alert<1-2>{atoms} constructible from $\mathcal{T}$
+    \only<2-3>{\\ (also called \alt<3>{\alert{alphabet}}{\alert{Herbrand base}})}
     \smallskip
-  \item<3-> A variable-free atom is also called \alert{ground}
+  \item<4-> A variable-free atom is also called \alert{ground}
     \medskip
-  \item<4-> \alert<4>{Ground instances} of $r\in P$\,: Set of variable-free rules obtained by
+  \item<5-> \structure{Ground instances} of $r\in P$\,: Set of variable-free rules obtained by
     replacing all variables in $r$ by elements from $\mathcal{T}$:
     \[
     \mathit{ground}(r)=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
     \]
-    where $\mathit{var}(r)$ stands for the set of all variables occurring in $r$;
+    where $\mathit{var}(r)$ stands for the set of all variables occurring in $r$ and
 
     $\theta$ is a (ground) substitution
     \medskip
-  \item<5-> \alert{Ground instantiation} of $P$\,: \
+  \item<6-> \structure{Ground instantiation} of $P$\,: \
     \(
     \mathit{ground}(P)=\textstyle\bigcup_{r\in P}\mathit{ground}(r)
     \)
