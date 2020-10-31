@@ -1,15 +1,24 @@
 % ----------------------------------------------------------------------
 \begin{frame}{Ground instantiation}
-  Let $P$ be a logic program
+
   \begin{itemize}
-  \item<1-> Let $\mathcal{T}$ be a set of \invisible<2-3>{(}variable-free\invisible<2-3>{)} \alert<1-2>{terms}
-    \only<2  >{\\ (also called                           \alert{Herbrand universe})}
-  \item<1-> Let $\mathcal{A}$ be a set of \invisible<2-3>{(}variable-free\invisible<2-3>{)} \alert<1-2>{atoms} constructible from $\mathcal{T}$
-    \only<2-3>{\\ (also called \alt<3>{\alert{alphabet}}{\alert{Herbrand base}})}
+  \item<2-> Let $\mathcal{T}$ be a set of \invisible<6-7>{(}variable-free\invisible<6-7>{)} \alert<2-3>{terms}
     \smallskip
-  \item<4-> A variable-free atom is also called \alert{ground}
+    \only<6  >{\\ (also called                           \alert{Herbrand universe})}
+    \begin{itemize}\normalsize
+    \item<only@3-5> \structure{Examples} \ $42$, ``$\mathit{cou cou}$'', $\mathit{Zorro}$, $\mathit{grandfather}(\mathit{leon})$, $3+X$
+    \end{itemize}
+    \smallskip
+  \item<2-> Let $\mathcal{A}$ be a set of \invisible<6-7>{(}variable-free\invisible<6-7>{)} \alert<2-3>{atoms} constructible from $\mathcal{T}$
+    \smallskip
+    \only<6-7>{\\ (also called \alt<7>{\alert{alphabet}}{\alert{Herbrand base}})}
+    \begin{itemize}\normalsize
+    \item<only@3-5> \structure{Examples} \ $q(42)$, $\mathit{married}(\alt<5>{X}{\mathit{grandfather}(\alt<4>{X}{\mathit{leon}})})$, $\mathit{prime}(3+X)$
+    \end{itemize}
     \medskip
-  \item<5-> \structure{Ground instances} of $r\in P$\,: Set of variable-free rules obtained by
+  \item<8-> A variable-free atom is also called \alert{ground}
+    \medskip
+  \item<9-> \structure{Ground instances} of a rule $r$ are obtained by
     replacing all variables in $r$ by elements from $\mathcal{T}$:
     \[
     \mathit{ground}(r)=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
@@ -18,14 +27,15 @@
 
     $\theta$ is a (ground) substitution
     \medskip
-  \item<6-> \structure{Ground instantiation} of $P$\,: \
-    \(
+  \item<10-> \structure{Ground instantiation} of logic program $P$
+    \[
     \mathit{ground}(P)=\textstyle\bigcup_{r\in P}\mathit{ground}(r)
-    \)
+    \]
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{An example}
+  \pause
   \small
   \[
     \begin{array}{@{}r@{\,}c@{\,}l}
