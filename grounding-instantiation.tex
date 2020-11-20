@@ -21,7 +21,7 @@
   \item<9-> \structure{Ground instances} of a rule $r$ are obtained by
     replacing all variables in $r$ by elements from $\mathcal{T}$:
     \[
-    \mathit{ground}(r)=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
+    \ground{r}=\{r\theta\mid\theta:\mathit{var}(r)\rightarrow \mathcal{T} \text{ and } \mathit{var}(r\theta)=\emptyset\}
     \]
     where $\mathit{var}(r)$ stands for the set of all variables occurring in $r$ and
 
@@ -29,7 +29,7 @@
     \medskip
   \item<10-> \structure{Ground instantiation} of logic program $P$
     \[
-    \mathit{ground}(P)=\textstyle\bigcup_{r\in P}\mathit{ground}(r)
+    \ground{P}=\textstyle\bigcup_{r\in P}\ground{r}
     \]
   \end{itemize}
 \end{frame}
