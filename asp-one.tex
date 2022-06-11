@@ -1,8 +1,31 @@
 % ----------------------------------------------------------------------
 \begin{frame}{ASP's syntax and semantics in a nutshell}
+  \medskip
   \begin{itemize}
   \item<1-> \structure{Syntax}
-  \item<2-> \structure{Semantics}
+    \begin{itemize}
+    \item
+      A \alert{logic program}, $P$, over a set $\mathcal{A}$ of atoms is a finite \alert{set} of rules
+      \smallskip
+    \item
+      A (normal) \alert{rule}, $r$, is of the form
+      \[
+        a_0 \leftarrow a_1,\dots,a_m, \neg a_{m+1}, \dots, \neg a_n
+      \]
+      where $0\leq m\leq n$ and each $a_i\in{\mathcal{A}}$ is an \alert{atom} for $0\leq i\leq n$
+    \end{itemize}
+    \medskip
+  \item<1-> \structure{Semantics}
+    \begin{itemize}
+    \item The \alert{reduct}, \reduct{P}{X}, of a program $P$ relative to
+      a set $X$ of atoms is
+      \begin{align*}
+        \reduct{P}{X} &= \{\head{r}\leftarrow\pbody{r} \mid r\in P,\ \nbody{r}\cap X=\emptyset\}
+      \end{align*}
+    \item A set $X$ of atoms is a \alert{stable model} of a program $P$
+
+      if $\Cn{\reduct{P}{X}}=X$
+    \end{itemize}
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------

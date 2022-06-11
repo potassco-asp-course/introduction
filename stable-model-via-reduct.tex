@@ -1,0 +1,25 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Stable model}
+  \begin{itemize}
+  \item A \alert{logic program}~$P$ is a \alert{set of rules}, $r$, of the form
+    \[\large
+      {a}\leftarrow{b_1,\dots,b_m,\neg{c_1},\dots,\neg{c_n}}
+    \]
+
+  \item<2-> The \alert{reduct}, \reduct{P}{X}, of a program $P$ relative to a set $X$ of atoms is
+    \begin{align*}
+      \reduct{P}{X} &= \{a\leftarrow b_1,\dots,b_m \mid r\in P,\ \{c_1,\dots,c_n\}\cap X=\emptyset\}
+    \end{align*}
+  \item<2-> $\Cn{P}$ stands for the smallest model of a positive program $P$
+    \bigskip
+  \item<3-> A set $X$ of atoms is a \alert{stable model} of a program $P$
+
+    if $\Cn{\reduct{P}{X}}=X$
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
