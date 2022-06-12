@@ -1,7 +1,7 @@
 % ----------------------------------------------------------------------
 \begin{frame}{Some ``logical'' remarks}
   \begin{itemize}
-  \item <1-> Positive rules are also referred to as \alert<1-2>{definite clauses}
+  \item <2-> Positive rules are also referred to as \alert<1-2>{definite clauses}
     \begin{itemize}
     \item Definite clauses are disjunctions with \alert<1>{exactly one} positive atom:
       \[
@@ -10,7 +10,7 @@
     \item A set of definite clauses has a (unique) \alert<3>{smallest model}
     \end{itemize}
     \medskip
-  \item<2-> \alert<2>{Horn clauses} are clauses with \alert<2>{at most} one positive atom
+  \item<3-> \alert<2>{Horn clauses} are clauses with \alert<2>{at most} one positive atom
     \begin{itemize}
     \item Every definite clause is a Horn clause but not vice versa
     \item Non-definite Horn clauses can be regarded as integrity constraints
@@ -18,10 +18,10 @@
     \item A set of Horn clauses has a \alert<3>{smallest model} or none
     \end{itemize}
     \medskip
-  \item<3-> This \alert<3>{smallest model} is the intended semantics of such sets of clauses
+  \item<4-> This \alert<3>{smallest model} is the intended semantics of such sets of clauses
     \begin{itemize}
     \item Given a positive program $P$,
-    $\Cn{P}$ corresponds to the smallest model of the set of
+    \Cn{P} corresponds to the smallest model of the set of
     definite clauses corresponding to $P$
   \end{itemize}
 \end{itemize}

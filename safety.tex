@@ -4,6 +4,7 @@
   \begin{itemize}
   % \item ASP systems require that all rules in a program are safe
   \item A normal rule is \alert{safe}, if all its variables occur in its positive body
+    \smallskip
   \item<2-> \structure{Examples}
     \begin{itemize}
     \item<3-> $p(a)\leftarrow{}$               \only<4->{\OK}
@@ -20,7 +21,7 @@
 \begin{frame}{Grounding safe programs}
   \begin{itemize}
   \item<1-> \(
-    P = \{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{}, \ t(X,Y) \leftarrow r(X,Y) \}
+    P = \{\, r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{}, \ t(X,Y) \leftarrow r(X,Y) \,\}
     \)
     \medskip
   \item <2-> \structure{Grounding intuitively}
@@ -28,20 +29,20 @@
     \begin{enumerate}\setcounter{enumi}{-1}
     \item <3-> Partition program along predicate dependencies
       \begin{itemize}\small
-      \item \( P_1 = \{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \} \)
-      \item \( P_2 = \{ t(X,Y) \leftarrow r(X,Y) \} \)
+      \item \( P_1 = \{\, r(a,b) \leftarrow {},    \ r(b,c)\leftarrow{} \} \)
+      \item \( P_2 = \{\, t(X,Y) \leftarrow r(X,Y) \,\} \)
       \end{itemize}
       \smallskip
     \item <4-> Ground $P_1$
       \begin{itemize}\small
-      \item Rules: \ $\{ r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \}$
-      \item Atoms:   $\{ r(a,b), r(b,c) \}$
+      \item Rules: \ $\{\, r(a,b)\leftarrow{}, \ r(b,c)\leftarrow{} \}$
+      \item Atoms:   $\{\, r(a,b), r(b,c) \,\}$
       \end{itemize}
       \smallskip
-    \item<5-> Ground $P_2$ relative to $\{ r(a,b), r(b,c) \}$
+    \item<5-> Ground $P_2$ relative to $\{\, r(a,b), r(b,c) \,\}$
       \begin{itemize}\small
-      \item Rules: \ $\{ t(a,b) \leftarrow r(a,b),\ t(b,c) \leftarrow r(b,c) \}$
-      \item Atoms:   $\{ r(a,b), r(b,c), t(a,b), t(b,c) \}$
+      \item Rules: \ $\{\, t(a,b) \leftarrow r(a,b),\ t(b,c) \leftarrow r(b,c) \,\}$
+      \item Atoms:   $\{\, r(a,b), r(b,c), t(a,b), t(b,c) \,\}$
       \end{itemize}
       \smallskip
     \item<6-> Resulting ground rules

@@ -1,24 +1,25 @@
 % ----------------------------------------------------------------------
-\begin{frame}{The logic of Here-and-There (\HT)}
+\begin{frame}{The logic of Here-and-There (HT)}
+  \smallskip
   \begin{itemize}
-  \item<1-> An \alert{interpretation} is a pair \tuple{H,T} of sets of atoms with $H \subseteq T$
+  \item<2-> An \alert{interpretation} is a pair \tuple{H,T} of sets of atoms with $H \subseteq T$
     \begin{itemize}
     \item $H$ is called ``here'' and
     \item $T$ is called ``there''
     \end{itemize}
-  \item<2-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
+  \item<3-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
     \medskip
-  \item<3-> \structure{Intuition} \
+  \item<4-> \structure{Intuition} \
     \begin{itemize}
     \item $H$ represents provably true atoms
     \item $T$ represents possibly true atoms
-    \item atoms not in $T$ are false
+    \item \phantom{$T$} atoms not in $T$ are false
     \end{itemize}
     \medskip
-  \item<4-> \structure{Idea}
+  \item<5-> \structure{Idea}
     \begin{itemize}
     \item $\tuple{H,T}\models\varphi\quad \sim\quad \varphi$ is provably true
-    \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[5], that is, classically true
+    \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[6] \ (ie, classically true)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -72,7 +73,7 @@
 % ----------------------------------------------------------------------
 \begin{frame}{Equilibrium models}
   \begin{itemize}
-  \item A total interpretation \tuple{ T,T} is an \alert{equilibrium model} of\\
+  \item A total interpretation \tuple{T,T} is an \alert{equilibrium model} of\\
     a formula $\varphi$,
     if
     \par
@@ -80,7 +81,7 @@
     \begin{enumerate}\normalsize
     \item
       \(
-      \tuple{ T,T}\models\varphi
+      \tuple{T,T}\models\varphi
       \)
     \item
       \(
