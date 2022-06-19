@@ -1,0 +1,50 @@
+% ----------------------------------------------------------------------
+\begin{frame}{An example}
+  \pause\small
+  \[
+    \begin{array}{@{}r@{\,}c@{\,}l}
+      P
+      &=&
+          \left\{
+          \ r(a,b)\leftarrow, \ r(b,c)\leftarrow, \ t(X,Y) \leftarrow r(X,Y) \
+          \right\}
+      \\[2ex]\pause
+      \mathcal{T}&=&\{a,b,c\}
+      \\[1ex]\pause
+      \mathcal{A}&=&\left\{
+                     \begin{array}{@{\,}c@{\,}}
+                       r(a,a),r(a,b),r(a,c), r(b,a),r(b,b),r(b,c), r(c,a),r(c,b),r(c,c),
+                       \\
+                       \!\! t(a,a),t(a,b),t(a,c), t(b,a),t(b,b),t(b,c), t(c,a),t(c,b),t(c,c)
+                     \end{array}
+      \right\}
+    \end{array}
+  \]
+  \pause
+  \[
+    \ground{P}
+    =
+    \left\{
+      \begin{array}{l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}l@{\,}c@{\,}l@{\,}}
+        r(a,b)&\leftarrow&, &&&\\
+        r(b,c)&\leftarrow&, &&&\\
+        \onslide<-5>{t(a,a)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(a,a),}&\onslide<-5>{t(b,a)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(b,a),}&\onslide<-5>{t(c,a)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(c,a),}\\
+                     t(a,b) &             \leftarrow & \alt<7->{,}{r(a,b),}&\onslide<-5>{t(b,b)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(b,b),}&\onslide<-5>{t(c,b)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(c,b),}\\
+        \onslide<-5>{t(a,c)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(a,c),}&             t(b,c) &             \leftarrow &\onslide<-6>{r(b,c),}&\onslide<-5>{t(c,c)}&\onslide<-5>{\leftarrow}&\onslide<-5>{r(c,c)}
+      \end{array}
+    \right\}
+  \]
+
+  \begin{itemize}\normalsize
+  \item<8->[\itarrow] \ \alert{Grounding} aims at reducing the ground instantiation
+
+    \ by applying semantic principles
+  \end{itemize}
+
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

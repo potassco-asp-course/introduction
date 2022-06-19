@@ -1,0 +1,22 @@
+% ----------------------------------------------------------------------
+\begin{frame}[fragile]{Language constructs}
+  \bigskip
+  \begin{itemize}\itemsep 5pt
+  \item \structure{Facts}                 \hfill\texttt{q(42).}
+  \item \structure{Rules}                 \hfill\texttt{p(X) :- q(X), not r(X).}
+  \item \structure{Conditional literals}  \hfill\texttt{p :- q(X) : r(X).}
+  \item \structure{Disjunction}           \hfill\texttt{p(X) ; q(X) :- r(X).}
+  \item \structure{Integrity constraints} \hfill\texttt{:- q(X), p(X).}
+  \item \structure{Choice}                \hfill\texttt{2 \{ p(X,Y) : q(X) \} 7 :- r(Y).}
+  \item \structure{Aggregates}            \hfill\texttt{s(Y) :- r(Y), 2 \#sum\{ X : p(X,Y), q(X) \} 7.}
+    \bigskip
+  \item \structure{Multi-objective optimization} \hfill \texttt{:$\mathtt{\sim}$ q(X), p(X,C). [C]}
+  \item[]\ \hfill\texttt{\#minimize \{ C : q(X), p(X,C) \}}
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

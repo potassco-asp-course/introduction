@@ -4,7 +4,7 @@
   \begin{itemize}
   \item<only@2-12> \structure{Lessons learned} from positive programs
     \begin{itemize}\normalsize
-    \item \Cn{P} is the smallest model of $P$, eliminating all other ones
+    \item \Cn{P} is the smallest \alt<6-11>{model of}{set closed under} $P$, eliminating all others
     \item Every atom in \Cn{P} is justified by a proof
       \medskip
     \item<only@3-4> \structure{Example} \
@@ -21,7 +21,7 @@
   \item<only@6-11> \structure{Logical attempt}\only<11>{ --- \textcolor{red}{failed}}
     \begin{itemize}\normalsize
     \item<7-> \structure{Hypothesis} \ The smallest model of $P$\,?
-    \item<only@8-> \structure{Example} \ $P=\{a\leftarrow\neg b\}$ \ yields \ $\{a\}$
+    \item<only@8-> \structure{Example} \ $P=\{a\leftarrow\neg b\}$ \ yields (stable model)\ $\{a\}$
     \item<only@9->[] but $P$ has \alt<10->{two minimal}{three} models, $\{a\}$\alt<10->{ and}{,} $\{b\}$
       \only<9>{, and $\{a,b\}$}
     \end{itemize}
@@ -64,7 +64,7 @@
       &\only<36-36>{   \dots   }&&\only<34-36>{$\T{P}{X_4}=\{a  \}$}&}
     \end{tabular}
 
-    \item<only@69-> \structure{Question} \ Can this idea be used for a logical characterization\,?
+    \item<only@69-> \structure{Question} \ Can this idea be used for a mathematical characterization\,?
 
       \only<70->{%
       \begin{enumerate}
@@ -72,7 +72,7 @@
       \item<71-> evaluate \nbody{r} of each rule $r\in P$ wrt to $Y$
         \begin{enumerate}
         \item<72-> if $\nbody{r}\cap Y\neq\emptyset$ drop $r$
-        \item<72-> if $\nbody{r}\cap Y  = \emptyset$ drop $\nbody{r}$ from $r$
+        \item<72-> if $\nbody{r}\cap Y  = \emptyset$ replace \body{r} by \pbody{r} from $r$
         \end{enumerate}
       \item<73-> if $Y=\Cn{P'}$ for the resulting (positive) program $P'$ then \OK\ else \KO\
       \end{enumerate}}
