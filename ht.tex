@@ -1,31 +1,31 @@
 % ----------------------------------------------------------------------
-\begin{frame}{The logic of Here-and-There (HT)}
+\begin{frame}{The logic of Here-and-There (\HT)}
   \smallskip
   \begin{itemize}
-  \item<2-> An \alert{interpretation} is a pair \tuple{H,T} of sets of atoms with $H \subseteq T$
+  \item<2-> \structure{Formula} \
+    \(
+    \varphi \ ::= \ \bot \ \mid \ a \ \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi
+    \)
+    \medskip
+  \item<3-> An \alert{interpretation} is a pair \tuple{H,T} of sets of atoms with $H \subseteq T$
     \begin{itemize}
     \item $H$ is called ``here'' and
     \item $T$ is called ``there''
     \end{itemize}
-  \item<3-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
+  \item<4-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
     \medskip
-  \item<4-> \structure{Intuition} \
+  \item<5-> \structure{Intuition} \
     \begin{itemize}
     \item $H$ represents provably true atoms
     \item $T$ represents possibly true atoms
     \item \phantom{$T$} atoms not in $T$ are false
     \end{itemize}
     \smallskip
-  \item<5-> \structure{Idea}
+  \item<6-> \structure{Idea}
     \begin{itemize}
     \item $\tuple{H,T}\models\varphi\quad \sim\quad \varphi$ is provably true
     \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[6] \ (ie, classically true)
     \end{itemize}
-  \smallskip
-  \item<3-> \structure{\HT-formula} \
-    \(
-      \varphi \ ::= \ \bot \ \mid \ a \ \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi
-    \)
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
