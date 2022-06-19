@@ -22,9 +22,9 @@
     \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[6] \ (ie, classically true)
     \end{itemize}
   \smallskip
-  \item<3-> \structure{\HT-formula}
+  \item<3-> \structure{\HT-formula} \
     \(
-      \varphi \ ::= \ \bot \ \mid \ a \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi
+      \varphi \ ::= \ \bot \ \mid \ a \ \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi
     \)
   \end{itemize}
 \end{frame}
@@ -43,19 +43,19 @@
 
     \smallskip
 
-  \item $\tuple{H,T} \models \varphi \rightarrow \psi$ if
+  \item<2-> $\tuple{H,T} \models \varphi \rightarrow \psi$ if
     $\tuple{X,T} \models \varphi$ implies $\tuple{X,T} \models \psi$
     \\\qquad\qquad
     for both $X=H,T$
 
     \bigskip
 
-  \item<2> \structure{Note} \ $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
+  \item<3> \structure{Note} \ $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
     \hfill since $\neg\varphi = \varphi\to\bot$
 
     \bigskip
 
-  \item<3-> An interpretation \tuple{H,T} is a \alert{model} of $\varphi$, if $\tuple{H,T} \models \varphi$
+  \item<4-> An interpretation \tuple{H,T} is a \alert{model} of $\varphi$, if $\tuple{H,T} \models \varphi$
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
