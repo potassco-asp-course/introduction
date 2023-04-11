@@ -1,0 +1,61 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Safety}
+  \bigskip
+  \begin{itemize}
+  % \item ASP systems require that all rules in a program are safe
+  \item A normal rule is \alert{safe}, if all its variables occur in its positive body
+    \smallskip
+  \item<2-> \structure{Examples}
+    \begin{itemize}\normalsize
+    \item<3-> \lstinline{p(a).}                    \only<4->{\OK}
+    \item<3-> \lstinline{p(X).}                    \only<5->{\KO}
+    \item<3-> \lstinline{p(X) :-  q(X).}           \only<6->{\OK}
+    \item<3-> \lstinline{p(X) :-  not q(X).}       \only<7->{\KO}
+    \item<3-> \lstinline{p(X) :-  not q(X), r(X).} \only<8->{\OK}
+    \end{itemize}
+    \medskip
+  \item<9-> A normal program is safe, if all of its rules are safe
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Grounding safe programs}
+  \begin{itemize}
+  \item<1->
+    \(
+    P = \{\tt\, r(a,b)., \ r(b,c)., \ t(X,Y)\text{ :- }r(X,Y).\,\}
+    \)
+    \medskip
+  \item <2-> \structure{Grounding intuitively}
+    \smallskip
+    \begin{enumerate}\setcounter{enumi}{-1}
+    \item <3-> Partition program along predicate dependencies
+      \begin{itemize}\small
+      \item \( P_1 = \{\tt\, r(a,b).,    \ r(b,c). \} \)
+      \item \( P_2 = \{\tt\, t(X,Y) \text{ :- } r(X,Y) \,\} \)
+      \end{itemize}
+      \smallskip
+    \item <4-> Ground $P_1$
+      \begin{itemize}\small
+      \item Rules: \ $\{\tt\, r(a,b)., \ r(b,c). \}$
+      \item Atoms:   $\{\tt\, r(a,b), r(b,c) \,\}$
+      \end{itemize}
+      \smallskip
+    \item<5-> Ground $P_2$ relative to $\{\, r(a,b), r(b,c) \,\}$
+      \begin{itemize}\small
+      \item Rules: \ $\{\tt\, t(a,b) \text{ :- } r(a,b),\ t(b,c) \text{ :- } r(b,c). \,\}$
+      \item Atoms:   $\{\tt\, r(a,b), r(b,c), t(a,b), t(b,c) \,\}$
+      \end{itemize}
+      \smallskip
+    \item<6-> Resulting ground rules
+      \begin{itemize}\small
+      \item  $\{ r(a,b)., \ r(b,c). \}\cup \{ t(a,b) \text{ :- } r(a,b).,\ t(b,c) \text{ :- } r(b,c). \}$
+      \end{itemize}
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
