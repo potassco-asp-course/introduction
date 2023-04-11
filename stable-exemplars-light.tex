@@ -1,0 +1,32 @@
+% ----------------------------------------------------------------------
+\begin{frame}[c]{Exemplars}
+  \centering
+  \begin{tabular}{|ll|l|}
+    \hline
+    \multicolumn{2}{|l|}{Logic program} & Answer sets\\
+    \hline
+    \hline
+    \texttt{a.}          &                      & \{\texttt{a}\}\\
+    \hline
+    \texttt{a :- b.}     &                      & \{\}\\
+    \hline
+    \texttt{a :- b.}     & \texttt{b.}          & \{\texttt{a,b}\}\\
+    \hline
+    \texttt{a :- b.}     & \texttt{b :- a.}     & \{\}\\
+    \hline
+    \texttt{a :- not c.} &                      & \{\texttt{a}\}\\
+    \hline
+    \texttt{a :- not c.} & \texttt{c.}          & \{\texttt{c}\}\\
+    \hline
+    \texttt{a :- not c.} & \texttt{c :- not a.} & \{\texttt{a}\}, \{\texttt{c}\}\\
+    \hline
+    \texttt{a :- not a.} &                      & \\
+    \hline
+  \end{tabular}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
