@@ -4,26 +4,18 @@
   \begin{itemize}
   \item <1->
     A \alert{logic program}, $P$, over a set $\mathcal{A}$ of atoms is a finite \alert{set} of rules
-  \item <1->
-    A \alert{rule}, $r$, is of the form
-    \[
-      \alt<3->{\tt a_0\texttt{ :- } a_1,\dots,a_m,\texttt{ not }{a_{m+1}},\dots,\texttt{ not }{a_n}.}%
-                  {a_0 \leftarrow   a_1,\dots,a_m,         \neg a_{m+1},\dots,         \neg a_n}
-    \]
-    where $0\leq m\leq n$ and each $a_i\in{\mathcal{A}}$ is an atom for $0\leq i\leq n$
     \medskip
-  \item <2->
-    \structure{Notation}
-    \begin{align*}
-      \head{r}\phantom{^+}   &=\, \alt<3->{\mathtt{a_0}}{a_0}
-      \\
-      \body{r}\phantom{^+}   &=\, \alt<3->{\tt\{a_1,\dots,a_m,\texttt{ not }{a_{m+1}},\dots,\texttt{ not }{a_n}\}}%
-                                          {\{a_1,\dots,a_m,          \neg a_{m+1},\dots,          \neg a_n\}}
-      \\
-      \pbody{r}              &=\, \alt<3->{\tt\{a_1,\dots,a_m\}}{\{a_1,\dots,a_m\}}
-      \\
-      \nbody{r}              &=\, \alt<3->{\tt\{a_{m+1},\dots,a_n\}}{\{a_{m+1},\dots,a_n\}}
-    \end{align*}%
+  \item <1->
+    A \alert{rule} is of the form
+    \[
+      \alt<2>{\underbrace{\tt a_0}_{\alert{\text{\normalsize head}}} \texttt{ :- } \underbrace{\tt a_1,\dots,a_m,\texttt{ not }{a_{m+1}},\dots,\texttt{ not }{a_n}.}_{\alert{\text{\normalsize body}}}}
+             {\tt            a_0                               \texttt{ :- }                  a_1,\dots,a_m,\texttt{ not }{a_{m+1}},\dots,\texttt{ not }{a_n}.}
+    \]
+    where $0\leq m\leq n$ and each $a_i\in{\mathcal{A}}$ is an \alert{atom} for $0\leq i\leq n$
+    \bigskip
+  \item <only@4-> A \alert{literal} is an atom or a negated atom
+    \smallskip
+  \item <only@5-> \structure{Note} \ A body is a (finite) \alert{set} of literals
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
