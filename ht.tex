@@ -59,17 +59,17 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Classical tautologies}
+\begin{frame}{Tautologies}
   \centering
   \bigskip
   \[
     \begin{array}{| c | c || c | c | c | c | c | c |}
       \hline
-      H         & T          & a      & \neg a & \alert<1>{a \vee \neg a} & \neg\neg a & \alert<2>{\neg\neg a \vee \neg a} & \alert<1>{a \leftarrow \neg\neg a}
+      H         & T          & a      & \neg a & \alert<1>{a \vee \neg a} & \neg\neg a & \alert<2>{\neg\neg a \vee \neg a} & a \leftarrow \neg\neg a
       \\\hline\hline
       \{ a \}   & \{ a \}    & \true  & \false & \true                    & \true      & \true                             & \true
       \\\hline
-      \emptyset & \{ a \}    & \false & \false & \alert<1>{\false}        & \true      & \true                             & \alert<1>{\false}
+      \emptyset & \{ a \}    & \false & \false & \alert<1>{\false}        & \true      & \true                             & \false
       \\\hline
       \emptyset & \emptyset  & \false & \true  & \true                    & \false     & \true                             & \true
       \\\hline
