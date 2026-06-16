@@ -1,111 +1,62 @@
 % ----------------------------------------------------------------------
-\begin{frame}{The logic of Here-and-There (\HT)}
+\begin{frame}{Logic \`a la Arend Heyting}{and Kurt G\"odel}
   \smallskip
   \begin{itemize}
-  \item<2-> \structure{Formula} \
+  \item \structure{Alphabet} \ A set $\mathcal{A}$ of atoms
+  \item \structure{Formula} \
     \(
     \varphi \ ::= \ \bot \ \mid \ a \ \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi
     \)
-    \medskip
-  \item<3-> \structure{Interpretation} \ A pair \tuple{H,T} of sets of atoms with $H \subseteq T$
+    \smallskip
+  \item<2-> \structure{Interpretation} \ A pair \tuple{H,T} of sets of atoms with $H \subseteq T \subseteq\mathcal{A}$
     \begin{itemize}
     \item $H$ is called ``here'' and
     \item $T$ is called ``there''
     \end{itemize}
-  \item<4-> \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
-    \medskip
-  \item<5-> \structure{Intuition} \
+  \item<2->[] \structure{Note} \ \tuple{H,T} is a simplified Kripke structure
+    \smallskip
+  \item<3-> \structure{Intuition} \
     \begin{itemize}
     \item $H$ represents provably true atoms
     \item $T$ represents possibly true atoms
-    \item \phantom{$T$} atoms not in $T$ are false
+    \item $\mathcal{A}\setminus T$ represents false atoms
     \end{itemize}
-    \smallskip
-  \item<6-> \structure{Idea}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Logic \`a la Arend Heyting}{and Kurt G\"odel}
+  \smallskip
+  \begin{itemize}
+  \item \structure{Satisfaction}
     \begin{itemize}
-    \item $\tuple{H,T}\models\varphi\quad \sim\quad \varphi$ is provably true
-    \item $\tuple{T,T}\models\varphi\quad \sim\quad \varphi$ is possibly true\pause[6] \ (ie, classically true)
+    \item $\tuple{H,T} \models a$ if $a \in H$
+    \item $\tuple{H,T} \models \varphi \wedge \psi$ if
+      $\tuple{H,T} \models \varphi$
+      and
+      $\tuple{H,T} \models \psi$
+    \item $\tuple{H,T} \models \varphi \vee \psi$ if
+      $\tuple{H,T} \models \varphi$
+      or
+      $\tuple{H,T} \models \psi$
+      \smallskip
+    \item<2-> \alert<2-3>{$\tuple{H,T} \models \varphi \rightarrow \psi$ if
+        $\tuple{X,T} \models \varphi$ implies $\tuple{X,T} \models \psi$
+        \makebox[0pt][l]{for both $X=H,T$}}
+      \smallskip
+    \item<only@3> $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
+      \hfill ($\neg\varphi = \varphi\to\bot$)
     \end{itemize}
-  \end{itemize}
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Satisfaction}
-  \begin{itemize}
-  \item $\tuple{H,T} \models a$ if $a \in H$ \hfill for any atom $a$
-  \item $\tuple{H,T} \models \varphi \wedge \psi$ if
-    $\tuple{H,T} \models \varphi$
-    and
-    $\tuple{H,T} \models \psi$
-  \item $\tuple{H,T} \models \varphi \vee \psi$ if
-    $\tuple{H,T} \models \varphi$
-    or
-    $\tuple{H,T} \models \psi$
-
     \smallskip
-
-  \item<2-> $\tuple{H,T} \models \varphi \rightarrow \psi$ if
-    $\tuple{X,T} \models \varphi$ implies $\tuple{X,T} \models \psi$
-    \\\qquad\qquad
-    for both $X=H,T$
-
-    \bigskip
-
-  \item<3> \structure{Note} \ $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
-    \hfill since $\neg\varphi = \varphi\to\bot$
-
-    \bigskip
-
-  \item<4-> An interpretation \tuple{H,T} is a \alert{model} of $\varphi$, if $\tuple{H,T} \models \varphi$
-  \end{itemize}
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Tautologies}
-  \centering
-  \bigskip
-  \[
-    \begin{array}{| c | c || c | c | c | c | c | c |}
-      \hline
-      H         & T          & a      & \neg a & \alert<1>{a \vee \neg a} & \neg\neg a & \alert<2>{\neg\neg a \vee \neg a} & a \leftarrow \neg\neg a
-      \\\hline\hline
-      \{ a \}   & \{ a \}    & \true  & \false & \true                    & \true      & \true                             & \true
-      \\\hline
-      \emptyset & \{ a \}    & \false & \false & \alert<1>{\false}        & \true      & \true                             & \false
-      \\\hline
-      \emptyset & \emptyset  & \false & \true  & \true                    & \false     & \true                             & \true
-      \\\hline
-    \end{array}
-  \]
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Equilibrium models}{(Pearce'96)}
-  \begin{itemize}
-  \item A total interpretation \tuple{T,T} is an \alert{equilibrium model} of\\
-    a formula $\varphi$,
-    if
-    \par
-    \smallskip
-    \begin{enumerate}\normalsize
-    \item
-      \(
-      \tuple{T,T}\models\varphi
-      \)
-    \item
-      \(
-      \tuple{H,T}\not\models\varphi
-      \)
-      for all $H\subset T$
-    \end{enumerate}
-    \smallskip
-  \item <2-> $T$ is called a \alert{stable model} of $\varphi$
-    \bigskip
-  \item<3-> \structure{Note}
-    \begin{itemize}\normalsize
-    \item $\tuple{T,T}$ acts as a classical model
-    \item $\tuple{H,T} \models P$ iff $H \models P^T$ \hfill ($P^T$ is the reduct of $P$ by $T$)
+  \item<4-> \structure{Intuition}
+    \begin{itemize}
+    \item $\tuple{H,T}\models\varphi\ \sim\ \varphi$ is provably true
+    \item $\tuple{T,T}\models\varphi\ \alt<5->{\text{\,iff\,}}{\sim}\ \only<5->{T\models}\varphi$\only<-4>{ is possibly true}
     \end{itemize}
+    \smallskip
+  \item<6-> \structure{Model} \ An interpretation \tuple{H,T} such that $\tuple{H,T} \models \varphi$
   \end{itemize}
 \end{frame}
-% ----------------------------------------------------------------------
+% --------------------------------------------------------------------------------
 %
 %%% Local Variables:
 %%% mode: latex
