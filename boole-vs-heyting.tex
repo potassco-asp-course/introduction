@@ -1,13 +1,32 @@
 % --------------------------------------------------------------------------------
 \begin{frame}{Boolean vs Heytingian Logic}
-  \begin{columns}[c]
-    \begin{column}{0.4\textwidth}
-      \textbf{Boolean}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-      \textbf{Heytingian}
-    \end{column}
-  \end{columns}
+  \begin{itemize}
+  \item \structure{Implication}
+    \begin{itemize}
+    \item \structure{Boolean} \
+      $\phi \rightarrow \psi$ is merely a logical shortcut for $\neg \phi \vee \psi$
+    \item \structure{Heytingian} \
+      Implication represents a directional derivation
+    \end{itemize}
+    \smallskip
+  \item \structure{Foundedness} \ Truth must be earned
+    \begin{itemize}
+    \item The truth of a formula is only justified if there exists a derivation starting from the facts
+    \item This is fundamental property separating Boolean from Heytingian-style systems
+    \end{itemize}
+    \smallskip
+  \item<2-> \structure{Tautologies}
+    \begin{center}
+    \begin{tabular}{c|c|c}
+      & \structure{Boolean} & \structure{Heytingian}\\
+      \hline
+      $\phi \vee \neg \phi$           &$\checkmark$&$\times$\\
+      $\neg \phi \vee \neg\neg \phi$  &$\checkmark$&$\checkmark$\\
+      $\neg\neg \phi \rightarrow \phi$&$\checkmark$&$\times$\\
+      $\phi \rightarrow \neg\neg\phi$ &$\checkmark$&$\checkmark$
+    \end{tabular}
+    \end{center}
+  \end{itemize}
 \end{frame}
 % --------------------------------------------------------------------------------
 %
