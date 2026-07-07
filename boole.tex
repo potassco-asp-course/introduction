@@ -12,7 +12,7 @@
   \item<3-> \structure{Intuition}      \ $I$ represents true atoms,
     $\mathcal{A}\setminus I$ represents false atoms
   \item<3-> \structure{Satisfaction}
-  \begin{itemize}
+  \begin{enumerate}
   \item $I \models a$ if $a \in I$
   \item $I \models \varphi \wedge \psi$ if
     $I \models \varphi$
@@ -23,10 +23,10 @@
     or
     $I \models \psi$
   \item $I \models \varphi \rightarrow \psi$ if
-    $I \models \varphi$ implies $I \models \psi$
+    $I \not\models \varphi$ or $I \models \psi$
     \smallskip
   \item<4> $I \models \neg\varphi$ if $I \not\models \varphi$
-  \end{itemize}
+  \end{enumerate}
   \item<5-> \structure{\alt<6>{\alert{Solution}}{Model}} \ An \alt<6>{\alert{assignment}}{interpretation} $I$ such that $I \models \varphi$
   \end{itemize}
 \end{frame}

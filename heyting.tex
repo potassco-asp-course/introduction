@@ -28,7 +28,7 @@
   \smallskip
   \begin{itemize}
   \item \structure{Satisfaction}
-    \begin{itemize}
+    \begin{enumerate}
     \item $\tuple{H,T} \models a$ if $a \in H$
     \item $\tuple{H,T} \models \varphi \wedge \psi$ if
       $\tuple{H,T} \models \varphi$
@@ -40,12 +40,12 @@
       $\tuple{H,T} \models \psi$
       \smallskip
     \item<2-> \alert<2-3>{$\tuple{H,T} \models \varphi \rightarrow \psi$ if
-        $\tuple{X,T} \models \varphi$ implies $\tuple{X,T} \models \psi$
+        $\tuple{X,T} \not\models \varphi$ or $\tuple{X,T} \models \psi$
         \makebox[0pt][l]{for both $X=H,T$}}
       \smallskip
     \item<only@3> $\tuple{H,T} \models \neg\varphi$ if $\tuple{T,T} \not\models \varphi$
       \hfill ($\neg\varphi = \varphi\to\bot$)
-    \end{itemize}
+    \end{enumerate}
   \item<4-> \structure{Intuition}
     \begin{itemize}
     \item $\tuple{H,T}\models\varphi\ \sim\ \varphi$ is provably true
