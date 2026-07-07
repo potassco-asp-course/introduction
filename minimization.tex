@@ -1,0 +1,57 @@
+% --------------------------------------------------------------------------------
+\begin{frame}{Non-monotonicity via Minimization}
+  \smallskip
+  \begin{itemize}
+  \item \structure{Closed-world assumption} \ Atoms are assumed false unless they are forced to be true
+    \smallskip
+  \item<2-> \structure{John McCarthy's circumscription} \
+    selects those Boolean models of a formula that minimize the set of true propositional variables
+    \smallskip
+  \item<3-> \structure{David Pearce's equilibrium models} \
+    are total Heytingian models of a formula that are minimally justified
+  \end{itemize}
+\end{frame}
+% --------------------------------------------------------------------------------
+\begin{frame}{David Pearce's equilibrium logic}
+  \smallskip
+  \begin{itemize}
+  \item \structure{Equilibrium Model} \
+
+    A total Heytingian model $\tuple{T,T}$ is an \alert{equilibrium model} of a formula $\varphi$ if
+    there is no proper subset $H \subset T$ such that $\tuple{H,T}\models\varphi$
+    \medskip
+  \item <2-> \structure{Theorem} \
+    The equilibrium models of a logic program correspond exactly to its stable models (answer sets)
+    \smallskip
+  \item[] <3-> Stable models are (minimal) Boolean models
+    \smallskip
+  \item<4-> \structure{Example} \
+    \medskip
+    \begin{columns}
+      \begin{column}<4->[t]{.35\textwidth}
+        \begin{tabular}[t]{l}
+          \texttt{\{ b \}.}
+          \\
+          \texttt{a :- b, not c.}
+        \end{tabular}%
+        \par\medskip
+        \only<5->{\;\structure{Stable models} \\\quad \texttt{\{\}}, \texttt{\{a,b\}}}
+      \end{column}
+      \begin{column}<6->[t]{.45\textwidth}
+        \begin{tabular}[t]{l}
+          $b\vee\neg b$
+          \\
+          $b\wedge\neg c\to a$
+        \end{tabular}%
+        \par\medskip
+        \only<7->{\;\structure{Equilibrium models} \\\quad $\tuple{\emptyset,\emptyset}$, $\tuple{\{a,b\},\{a,b\}}$}
+      \end{column}
+    \end{columns}
+  \end{itemize}
+\end{frame}
+% --------------------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: "slides"
+%%% End:
